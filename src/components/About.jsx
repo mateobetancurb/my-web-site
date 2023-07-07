@@ -4,10 +4,27 @@ const About = () => {
 	return (
 		<>
 			<main className="container about">
-				<h2>¿Quién soy?</h2>
+				<h2 className="about__h2">¿Quién soy?</h2>
 				<p>
-					Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsa
-					repudiandae, dolor impedit delectus perferendis accusantium.
+					Tengo más de 3 años en la industria tecnológica, he desarrollado
+					productos para clientes y también para empresas. Puedes ver algunos de
+					mis trabajos{" "}
+					<a
+						href="https://github.com/mateobetancurb/project-list"
+						target="_blank"
+						rel="noreferrer"
+						className="about__link"
+					>
+						aquí
+					</a>
+				</p>
+				<h3 className="about__skills">Especialidades</h3>
+				<p>
+					Soy un apasionado por las tecnologías y la ingeniería de software
+					enfocada a la web. Me gusta trabajar con:{" "}
+					<strong>
+						JavaScript, TypeScript, React, Vue, Node, Express, MySQL y MongoDB
+					</strong>
 				</p>
 			</main>
 		</>
