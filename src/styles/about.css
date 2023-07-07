@@ -8,7 +8,25 @@
 	padding-top: 5rem;
 }
 
+.about__h2 {
+	text-align: center;
+}
+
 .about__img {
 	width: 30rem;
 	border-radius: 100%;
+}
+
+.about__link {
+	font-weight: bolder;
+	color: #ffffff;
+}
+
+.about__link:hover {
+	text-decoration: underline;
+	color: #22577a;
+}
+
+.about__skills{
+  padding-top: 2.5rem;
 }
