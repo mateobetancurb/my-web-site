@@ -1,5 +1,6 @@
 import { Header } from "./components/Header";
 import { About } from "./components/About";
+import { Services } from "./components/Services";
 
 function App() {
 	return (
@@ -7,9 +8,8 @@ function App() {
 			<div style={{ backgroundColor: "#242424" }}>
 				<Header />
 			</div>
-			<div>
-				<About />
-			</div>
+			<About />
+			<Services />
 		</>
 	);
 }
