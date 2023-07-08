@@ -24,3 +24,9 @@ body {
 	margin: 0;
 	text-rendering: optimizeLegibility;
 }
+
+.container {
+	margin: 0 auto;
+	max-width: 90rem;
+	width: 90%;
+}
