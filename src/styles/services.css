@@ -1,0 +1,21 @@
+.services {
+	padding-top: 5rem;
+	padding-bottom: 5rem;
+}
+
+.services__h2 {
+	text-align: center;
+}
+
+.grid__services {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 3rem;
+	text-align: center;
+}
+
+@media screen and (max-width: 768px) {
+	.grid__services {
+		grid-template-columns: repeat(auto-fit, minmax(min(20rem, 100%), 1fr));
+	}
+}
