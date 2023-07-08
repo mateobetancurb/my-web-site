@@ -36,8 +36,8 @@
 }
 
 .header__text {
-	padding-top: 10rem;
-	padding-bottom: 10rem;
+	padding-top: 5rem;
+	padding-bottom: 5rem;
 	display: flex;
 	justify-content: space-between;
 	align-items: center;
@@ -46,6 +46,7 @@
 .header__img {
 	border-radius: 100%;
 	width: 30rem;
+	border: 2px solid #000;
 }
 
 .header__text--h1 {
@@ -91,7 +92,7 @@
 		margin-bottom: 2rem;
 	}
 	.header__text {
-    padding-top: 0;
+		padding-top: 0;
 		text-align: center;
 	}
 	.header__text--h1 {
