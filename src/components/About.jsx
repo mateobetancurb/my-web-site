@@ -6,9 +6,24 @@ const About = () => {
 			<main className="container about">
 				<h2 className="about__h2">¿Quién soy?</h2>
 				<p>
-					Tengo más de 3 años en la industria tecnológica, he desarrollado
-					productos para clientes y también para empresas. Puedes ver algunos de
-					mis trabajos{" "}
+					Me gusta aprender y enseñar de lo que me apasiona: el desarrollo de
+					software. Si tuviera que escoger una palabra para definir lo que hago
+					sería: transparencia, me identifico con ella, con los proyectos
+					transparentes y con la transparencia del código.
+				</p>
+				<p>
+					Llevo 3 años desarrollando proyectos en la industria tecnológica para
+					empresas, marcas y personas. Creer en los proyectos es ver más allá
+					del código, es conectar con ellos y hacer de ellos algo que impacte.
+				</p>
+				<p>
+					Me gusta crear con {""}
+					<strong>
+						JavaScript, TypeScript, React, Vue, Node, Express, MySQL y MongoDB.
+					</strong>
+				</p>
+				<p>
+					Puedes ver algunos de mis trabajos{" "}
 					<a
 						href="https://github.com/mateobetancurb/project-list"
 						target="_blank"
@@ -17,14 +32,6 @@ const About = () => {
 					>
 						aquí
 					</a>
-				</p>
-				<h3 className="about__skills">Especialidades</h3>
-				<p>
-					Soy un apasionado por las tecnologías y la ingeniería de software
-					enfocada a la web. Me gusta trabajar con:{" "}
-					<strong>
-						JavaScript, TypeScript, React, Vue, Node, Express, MySQL y MongoDB
-					</strong>
 				</p>
 			</main>
 		</>
