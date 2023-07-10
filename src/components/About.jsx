@@ -24,14 +24,14 @@ const About = () => {
 					</strong>
 				</p>
 				<p>
-					Puedes ver algunos de mis trabajos{" "}
+					Puedes ver algunos de mis trabajos haciendo{" "}
 					<a
 						href="https://github.com/mateobetancurb/project-list"
 						target="_blank"
 						rel="noreferrer"
 						className="about__link"
 					>
-						aquí
+						clic aquí
 					</a>
 				</p>
 			</main>
