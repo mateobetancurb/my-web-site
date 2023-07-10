@@ -1,0 +1,17 @@
+.alert {
+	background-color: #f6b6bb;
+	border: 1px solid #f5c6cb;
+	color: #721c24;
+	padding: 1rem 1rem;
+	border-radius: 5rem;
+	text-align: center;
+	width: 50rem;
+	margin: 0 auto 2rem auto;
+	font-weight: bold;
+}
+
+@media screen and (max-width: 768px) {
+	.alert {
+		width: 100%;
+	}
+}
