@@ -43,11 +43,6 @@ const Form = () => {
 			return;
 		}
 		setShowAlert(false);
-		sendData();
-	};
-
-	const sendData = () => {
-		console.log("Enviando datos...");
 	};
 
 	return (
@@ -56,8 +51,8 @@ const Form = () => {
 				onSubmit={handleSubmit}
 				name="contact"
 				method="POST"
-				className="container form"
 				data-netlify="true"
+				className="container form"
 			>
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
