@@ -48,36 +48,14 @@ const Form = () => {
 		setShowAlert(false);
 	};
 
-	const encode = (data) => {
-		return Object.keys(data)
-			.map(
-				(key) => encodeURIComponent(key) + "=" + encodeURIComponent(data[key])
-			)
-			.join("&");
-	};
-
-	const sendData = async () => {
-		try {
-			const response = await fetch("/", {
-				method: "POST",
-				headers: {
-					"Content-Type": "application/x-www-form-urlencoded",
-				},
-				body: encode({ "form-name": "contact-form", ...formData }),
-			});
-			console.log(response);
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
 	return (
 		<>
 			<form
+				action="https://send.pageclip.co/7HkQrhR1Z5kEDDsXydCvppu7cxpsYuqq/contact"
+				method="post"
 				onSubmit={handleSubmit}
 				name="contact"
-				data-netlify="true"
-				className="container form"
+				className="container form pageclip-form"
 			>
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
@@ -129,7 +107,6 @@ const Form = () => {
 				></textarea>
 				<button
 					type="submit"
-					onClick={sendData}
 					className={disableBtn ? "form__button--disable" : "form__button"}
 					disabled={disableBtn}
 				>
