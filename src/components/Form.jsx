@@ -1,19 +1,10 @@
 import { useState, useEffect } from "react";
 import { Alert } from "./Alert";
+import { services } from "../helpers/index";
 import "../styles/index.css";
 import "../styles/form.css";
 
 const Form = () => {
-	const services = [
-		{ id: 1, name: "Sitios web" },
-		{ id: 2, name: "Aplicaciones web" },
-		{ id: 3, name: "Asesorías" },
-		{ id: 4, name: "Optimización" },
-		{ id: 5, name: "Diseño" },
-		{ id: 6, name: "WordPress" },
-		{ id: 7, name: "Otro" },
-	];
-
 	const [disableBtn, setDisableBtn] = useState(false);
 	const [showOtherService, setShowOtherService] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
@@ -22,6 +13,9 @@ const Form = () => {
 	const [service, setService] = useState("");
 	const [otherService, setOtherService] = useState("");
 	const [description, setDescription] = useState("");
+
+	//TODO: message when user finish correctly the form
+	//TODO: clear form state
 
 	useEffect(() => {
 		if (
@@ -58,7 +52,13 @@ const Form = () => {
 
 	return (
 		<>
-			<form onSubmit={handleSubmit} className="container form">
+			<form
+				onSubmit={handleSubmit}
+				name="contact"
+				method="POST"
+				className="container form"
+				data-netlify="true"
+			>
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
 				{showAlert && <Alert message="Todos los campos son obligatorios" />}
