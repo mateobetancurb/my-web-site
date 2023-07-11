@@ -107,7 +107,11 @@ const Form = () => {
 				></textarea>
 				<button
 					type="submit"
-					className={disableBtn ? "form__button--disable" : "form__button"}
+					className={
+						disableBtn
+							? "form__button--disable"
+							: "form__button pageclip-form__submit"
+					}
 					disabled={disableBtn}
 				>
 					Enviar
