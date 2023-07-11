@@ -2,6 +2,7 @@ import { Header } from "./components/Header";
 import { About } from "./components/About";
 import { Services } from "./components/Services";
 import { Form } from "./components/Form";
+import { Footer } from "./components/Footer";
 
 function App() {
 	return (
@@ -13,7 +14,8 @@ function App() {
 			<Services />
 			<div style={{ backgroundColor: "#242424" }}>
 				<Form />
-			</div>
+      </div>
+      <Footer/>
 		</>
 	);
 }
