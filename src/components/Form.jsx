@@ -54,6 +54,7 @@ const Form = () => {
 				data-netlify="true"
 				className="container form"
 			>
+				<input type="hidden" name="form-name" value="contact" />
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
 				{showAlert && <Alert message="Todos los campos son obligatorios" />}
