@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { Loader } from "./Loader";
 import { Alert } from "./Alert";
 import { services } from "../helpers/index";
 import "../styles/index.css";
@@ -7,6 +8,7 @@ import "../styles/form.css";
 const Form = () => {
 	const [disableBtn, setDisableBtn] = useState(false);
 	const [showAlert, setShowAlert] = useState(false);
+	const [isSendingData, setIsSendingData] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -46,6 +48,10 @@ const Form = () => {
 			return;
 		}
 		setShowAlert(false);
+		setIsSendingData(true);
+		setTimeout(() => {
+			setIsSendingData(false);
+		}, 1500);
 	};
 
 	return (
@@ -55,7 +61,7 @@ const Form = () => {
 				method="post"
 				onSubmit={handleSubmit}
 				name="contact"
-				className="container"
+				className="container form"
 			>
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
@@ -105,17 +111,21 @@ const Form = () => {
 					placeholder="Escribe una breve descripción del servicio seleccionado"
 					className="form__input"
 				></textarea>
-				<button
-					type="submit"
-					className={
-						disableBtn
-							? "form__button--disable"
-							: "form__button pageclip-form__submit"
-					}
-					disabled={disableBtn}
-				>
-					Enviar
-				</button>
+				{isSendingData ? (
+					<Loader />
+				) : (
+					<button
+						type="submit"
+						className={
+							disableBtn
+								? "form__button--disable"
+								: "form__button pageclip-form__submit"
+						}
+						disabled={disableBtn}
+					>
+						Enviar
+					</button>
+				)}
 			</form>
 		</>
 	);
@@ -123,5 +133,6 @@ const Form = () => {
 
 export { Form };
 
+//TODO: set loader when user submit the form
+//TODO: clear form state after submit
 //TODO: message when user finish correctly the form
-//TODO: clear form state
