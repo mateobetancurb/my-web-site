@@ -55,7 +55,7 @@ const Form = () => {
 				method="post"
 				onSubmit={handleSubmit}
 				name="contact"
-				className="container form pageclip-form"
+				className="container"
 			>
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
