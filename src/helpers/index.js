@@ -5,5 +5,4 @@ export const services = [
 	{ id: 4, name: "Optimización" },
 	{ id: 5, name: "Diseño" },
 	{ id: 6, name: "WordPress" },
-	{ id: 7, name: "Otro" },
 ];
