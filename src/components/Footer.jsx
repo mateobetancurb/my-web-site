@@ -4,7 +4,8 @@ const Footer = () => {
 	return (
 		<footer className="footer">
 			<p>
-				<strong>Mateo</strong> &copy; Derechos Reservados - 2023
+				<strong>Mateo</strong> &copy; Derechos Reservados -{" "}
+				{new Date().getFullYear()}
 			</p>
 		</footer>
 	);
