@@ -72,12 +72,7 @@ const Form = () => {
 
 	return (
 		<>
-			<form
-				action="https://send.pageclip.co/BKBRCE4nMTvclGOV85FLLCYimOVbfyFS/web-site/"
-				method="post"
-				onSubmit={handleSubmit}
-				className="container form"
-			>
+			<form method="post" onSubmit={handleSubmit} className="container form">
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
 				{showAlert && <Alert message="Todos los campos son obligatorios" />}
