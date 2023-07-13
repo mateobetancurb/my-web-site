@@ -6,9 +6,10 @@ import "../styles/index.css";
 import "../styles/form.css";
 
 const Form = () => {
-	const [disableBtn, setDisableBtn] = useState(false);
+	const [disableBtn, setDisableBtn] = useState(true);
 	const [showAlert, setShowAlert] = useState(false);
 	const [isSendingData, setIsSendingData] = useState(false);
+	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -28,9 +29,12 @@ const Form = () => {
 			formData.name.trim() !== "" &&
 			formData.email.trim() !== "" &&
 			formData.service.trim() !== "" &&
-			formData.description.trim() !== ""
+			formData.description.trim() !== "" &&
+			formData.description.length > 9
 		) {
 			setDisableBtn(false);
+		} else {
+			setDisableBtn(true);
 		}
 	}, [formData.name, formData.email, formData.service, formData.description]);
 
@@ -52,6 +56,18 @@ const Form = () => {
 		setTimeout(() => {
 			setIsSendingData(false);
 		}, 1500);
+		setFormData({
+			name: "",
+			email: "",
+			service: "",
+			description: "",
+		});
+		setTimeout(() => {
+			setIsSubmitted(true);
+		}, 1600);
+		setTimeout(() => {
+			setIsSubmitted(false);
+		}, 6000);
 	};
 
 	return (
@@ -108,7 +124,7 @@ const Form = () => {
 					onChange={handleChange}
 					cols="30"
 					rows="5"
-					placeholder="Escribe una breve descripción del servicio seleccionado"
+					placeholder="Escribe una breve descripción del servicio seleccionado (escribe mínimo 10 caracteres)"
 					className="form__input"
 				></textarea>
 				{isSendingData ? (
@@ -126,13 +142,14 @@ const Form = () => {
 						Enviar
 					</button>
 				)}
+				{isSubmitted && (
+					<h3 className="form__submitted">
+						Gracias por contactarme, te responderé lo más pronto posible.
+					</h3>
+				)}
 			</form>
 		</>
 	);
 };
 
 export { Form };
-
-//TODO: set loader when user submit the form
-//TODO: clear form state after submit
-//TODO: message when user finish correctly the form
