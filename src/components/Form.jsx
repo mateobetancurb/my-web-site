@@ -73,7 +73,7 @@ const Form = () => {
 	return (
 		<>
 			<form
-				action="https://send.pageclip.co/7HkQrhR1Z5kEDDsXydCvppu7cxpsYuqq/contact"
+				action="https://send.pageclip.co/BKBRCE4nMTvclGOV85FLLCYimOVbfyFS"
 				method="post"
 				onSubmit={handleSubmit}
 				name="contact"
