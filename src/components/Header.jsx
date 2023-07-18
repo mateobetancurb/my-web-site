@@ -6,7 +6,7 @@ import "../styles/header.css";
 function Header() {
 	const downloadCV = () => {
 		const link = document.createElement("a");
-		link.href = "/public/cv-web-site.pdf";
+		link.href = "/public/cv/cv-web-site.pdf";
 		link.download = "cv-web-site.pdf";
 		link.click();
 	};
