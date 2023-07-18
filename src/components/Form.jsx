@@ -1,11 +1,13 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Loader } from "./Loader";
 import { Alert } from "./Alert";
 import { services } from "../helpers/index";
+import emailjs from "@emailjs/browser";
 import "../styles/index.css";
 import "../styles/form.css";
 
 const Form = () => {
+	const form = useRef();
 	const [disableBtn, setDisableBtn] = useState(true);
 	const [showAlert, setShowAlert] = useState(false);
 	const [isSendingData, setIsSendingData] = useState(false);
@@ -51,6 +53,23 @@ const Form = () => {
 			setDisableBtn(true);
 			return;
 		}
+
+		emailjs
+			.sendForm(
+				import.meta.env.VITE_SERVICE_ID,
+				import.meta.env.VITE_TEMPLATE_ID,
+				e.target,
+				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
+			)
+			.then(
+				(result) => {
+					console.log(result.text);
+				},
+				(error) => {
+					console.log(error.text);
+				}
+			);
+
 		setShowAlert(false);
 		setIsSendingData(true);
 		setTimeout(() => {
@@ -72,7 +91,7 @@ const Form = () => {
 
 	return (
 		<>
-			<form method="post" onSubmit={handleSubmit} className="container form">
+			<form ref={form} onSubmit={handleSubmit} className="container form">
 				<h2 className="form__h2">Contáctame</h2>
 				<p className="form__p">Comencemos a crear eso que tienes en mente...</p>
 				{showAlert && <Alert message="Todos los campos son obligatorios" />}
