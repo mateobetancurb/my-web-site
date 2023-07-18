@@ -128,5 +128,6 @@ select.round:focus {
 
 	.form__submitted {
 		padding: 1rem 3rem;
+    width: 100%;
 	}
 }
