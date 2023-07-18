@@ -1,16 +1,18 @@
-import Logo from "../assets/img/logo.svg";
 import Photo from "../assets/img/mateo.webp";
 
 import "../styles/index.css";
 import "../styles/header.css";
 
 function Header() {
+	const downloadCV = () => {
+		const link = document.createElement("a");
+		link.href = "/public/cv-web-site.pdf";
+		link.download = "cv-web-site.pdf";
+		link.click();
+	};
 	return (
 		<>
 			<header className="header container">
-				<picture>
-					<img src={Logo} alt="Logo de sitio web" className="header__logo" />
-				</picture>
 				<nav className="header__nav">
 					<div className="header__ul">
 						<a
@@ -65,7 +67,9 @@ function Header() {
 						Hola! Soy Mateo... programador de software
 					</h1>
 					<h2 className="header__text--p">De tu imaginación a la realidad</h2>
-					<button className="header__text--contact">Contáctame</button>
+					<button onClick={downloadCV} className="header__text--contact">
+						Descargar CV
+					</button>
 				</div>
 			</div>
 		</>
