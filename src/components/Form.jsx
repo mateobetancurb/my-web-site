@@ -40,6 +40,13 @@ const Form = () => {
 		}
 	}, [formData.name, formData.email, formData.service, formData.description]);
 
+	const templateParams = {
+		name: formData.name,
+		email: formData.email,
+		service: formData.service,
+		description: formData.description,
+	};
+
 	const handleSubmit = (e) => {
 		e.preventDefault();
 		if (
@@ -58,7 +65,7 @@ const Form = () => {
 			.sendForm(
 				import.meta.env.VITE_SERVICE_ID,
 				import.meta.env.VITE_TEMPLATE_ID,
-				e.target,
+				templateParams,
 				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 			)
 			.then(
