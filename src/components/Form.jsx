@@ -58,6 +58,7 @@ const Form = () => {
 			.sendForm(
 				import.meta.env.VITE_SERVICE_ID,
 				import.meta.env.VITE_TEMPLATE_ID,
+				form.current,
 				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 			)
 			.then(
@@ -156,7 +157,7 @@ const Form = () => {
 				)}
 				{isSubmitted && (
 					<h3 className="form__submitted">
-						Gracias por contactarme, te responderé lo más pronto posible.
+						Gracias por contactarme, te responderé muy pronto...
 					</h3>
 				)}
 			</form>
