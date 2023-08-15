@@ -1,4 +1,5 @@
-import { useState, useEffect, useRef } from "react";
+import React, { useState, useEffect, useRef } from "react";
+import { Toaster, toast } from "sonner";
 import { Loader } from "./Loader";
 import { Alert } from "./Alert";
 import { services } from "../helpers/index";
@@ -62,11 +63,12 @@ const Form = () => {
 				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 			)
 			.then(
-				(result) => {
-					console.log(result.text);
+				() => {
+					toast.success("Pronto me contactaré contigo");
 				},
 				(error) => {
 					console.log(error.text);
+					toast.error("Hubo un error al enviar el formulario");
 				}
 			);
 
@@ -140,26 +142,18 @@ const Form = () => {
 					placeholder="Escribe una breve descripción del servicio seleccionado (escribe mínimo 10 caracteres)"
 					className="form__input"
 				></textarea>
-				{isSendingData ? (
-					<Loader />
-				) : (
-					<button
-						type="submit"
-						className={
-							disableBtn
-								? "form__button--disable"
-								: "form__button pageclip-form__submit"
-						}
-						disabled={disableBtn}
-					>
-						Enviar
-					</button>
-				)}
-				{isSubmitted && (
-					<h3 className="form__submitted">
-						Gracias por contactarme, te responderé muy pronto...
-					</h3>
-				)}
+				<button
+					type="submit"
+					className={
+						disableBtn
+							? "form__button--disable"
+							: "form__button pageclip-form__submit"
+					}
+					disabled={disableBtn}
+				>
+					Enviar
+				</button>
+				<Toaster richColors position="bottom-center" duration={4000} />
 			</form>
 		</>
 	);
