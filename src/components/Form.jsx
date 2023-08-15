@@ -1,5 +1,6 @@
 import { useState, useEffect, useRef } from "react";
-import { Loader } from "./Loader";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 import { Alert } from "./Alert";
 import { services } from "../helpers/index";
 import emailjs from "@emailjs/browser";
@@ -10,8 +11,6 @@ const Form = () => {
 	const form = useRef();
 	const [disableBtn, setDisableBtn] = useState(true);
 	const [showAlert, setShowAlert] = useState(false);
-	const [isSendingData, setIsSendingData] = useState(false);
-	const [isSubmitted, setIsSubmitted] = useState(false);
 	const [formData, setFormData] = useState({
 		name: "",
 		email: "",
@@ -62,31 +61,39 @@ const Form = () => {
 				import.meta.env.VITE_EMAILJS_PUBLIC_KEY
 			)
 			.then(
-				(result) => {
-					console.log(result.text);
+				() => {
+					toast.success("Pronto me contactaré contigo!", {
+						position: "top-center",
+						autoClose: 6000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+						theme: "light",
+					});
 				},
 				(error) => {
 					console.log(error.text);
+					toast.error("Hubo un error al enviar el formulario!", {
+						position: "top-center",
+						autoClose: 6000,
+						hideProgressBar: false,
+						closeOnClick: true,
+						pauseOnHover: true,
+						draggable: true,
+						progress: undefined,
+						theme: "light",
+					});
 				}
 			);
-
 		setShowAlert(false);
-		setIsSendingData(true);
-		setTimeout(() => {
-			setIsSendingData(false);
-		}, 1500);
 		setFormData({
 			name: "",
 			email: "",
 			service: "",
 			description: "",
 		});
-		setTimeout(() => {
-			setIsSubmitted(true);
-		}, 1600);
-		setTimeout(() => {
-			setIsSubmitted(false);
-		}, 6000);
 	};
 
 	return (
@@ -140,26 +147,29 @@ const Form = () => {
 					placeholder="Escribe una breve descripción del servicio seleccionado (escribe mínimo 10 caracteres)"
 					className="form__input"
 				></textarea>
-				{isSendingData ? (
-					<Loader />
-				) : (
-					<button
-						type="submit"
-						className={
-							disableBtn
-								? "form__button--disable"
-								: "form__button pageclip-form__submit"
-						}
-						disabled={disableBtn}
-					>
-						Enviar
-					</button>
-				)}
-				{isSubmitted && (
-					<h3 className="form__submitted">
-						Gracias por contactarme, te responderé muy pronto...
-					</h3>
-				)}
+				<button
+					type="submit"
+					className={
+						disableBtn
+							? "form__button--disable"
+							: "form__button pageclip-form__submit"
+					}
+					disabled={disableBtn}
+				>
+					Enviar
+				</button>
+				<ToastContainer
+					position="top-center"
+					autoClose={5000}
+					hideProgressBar={false}
+					newestOnTop={false}
+					closeOnClick
+					rtl={false}
+					pauseOnFocusLoss
+					draggable
+					pauseOnHover
+					theme="light"
+				/>
 			</form>
 		</>
 	);
