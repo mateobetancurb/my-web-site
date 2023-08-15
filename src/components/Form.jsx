@@ -62,7 +62,7 @@ const Form = () => {
 			)
 			.then(
 				() => {
-					toast.success("Pronto me contactaré contigo!", {
+					toast.success("¡Pronto me contactaré contigo!", {
 						position: "top-center",
 						autoClose: 6000,
 						hideProgressBar: false,
@@ -75,7 +75,7 @@ const Form = () => {
 				},
 				(error) => {
 					console.log(error.text);
-					toast.error("Hubo un error al enviar el formulario!", {
+					toast.error("¡Hubo un error al enviar el formulario!", {
 						position: "top-center",
 						autoClose: 6000,
 						hideProgressBar: false,
