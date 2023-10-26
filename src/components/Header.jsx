@@ -7,7 +7,7 @@ function Header() {
 	const downloadCV = () => {
 		const link = document.createElement("a");
 		const publicURL = window.location.origin;
-		link.href = `${publicURL}/cv/cv-web-site.pdf`;
+		link.href = `${publicURL}/cv/web-site-cv.pdf`;
 		link.download = "cv-web-site.pdf";
 		link.click();
 	};
