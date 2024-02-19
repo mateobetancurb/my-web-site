@@ -1,22 +1,34 @@
-import { Header } from "./components/Header";
-import { About } from "./components/About";
-import { Services } from "./components/Services";
-import { Form } from "./components/Form";
-import { Footer } from "./components/Footer";
+import "./styles/index.css";
+import "./styles/app.css";
 
 function App() {
 	return (
-		<>
-			<div style={{ backgroundColor: "#242424" }}>
-				<Header />
-			</div>
-			<About />
-			<Services />
-			<div style={{ backgroundColor: "#242424" }}>
-				<Form />
-      </div>
-      <Footer/>
-		</>
+		<main className="container">
+			<h1>Sitio web en construcción... </h1>
+			<section className="buttons">
+				<a
+					href="https://github.com/mateobetancurb"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Github
+				</a>
+				<a
+					href="https://www.linkedin.com/in/mateobetancurb/"
+					target="_blank"
+					rel="noreferrer"
+				>
+					LinkedIn
+				</a>
+				<a
+					href="https://twitter.com/mateobetancurb"
+					target="_blank"
+					rel="noreferrer"
+				>
+					Twitter
+				</a>
+			</section>
+		</main>
 	);
 }
 
