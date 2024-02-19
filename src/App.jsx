@@ -11,7 +11,7 @@ function App() {
 					target="_blank"
 					rel="noreferrer"
 				>
-					Github
+					GitHub
 				</a>
 				<a
 					href="https://www.linkedin.com/in/mateobetancurb/"
