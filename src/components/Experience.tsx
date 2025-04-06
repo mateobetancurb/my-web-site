@@ -13,7 +13,7 @@ const Experience = () => {
 							</h2>
 							<p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 								Mi trayectoria profesional y logros destacados durante los
-								últimos 4 años.
+								últimos 4 años
 							</p>
 						</div>
 					</div>
@@ -25,7 +25,7 @@ const Experience = () => {
 										<h3 className="text-xl font-bold text-white">
 											Desarrollador Frontend Senior
 										</h3>
-										<p className="text-gray-400">TechCorp Inc.</p>
+										<p className="text-gray-400">TechCorp Inc</p>
 									</div>
 									<div className="rounded-full bg-black px-3 py-1 text-sm text-gray-300">
 										2023 - Presente
@@ -36,7 +36,7 @@ const Experience = () => {
 										Lideré el desarrollo de la aplicación web insignia de la
 										empresa, mejorando el rendimiento en un 40% e implementando
 										nuevas funcionalidades que aumentaron la participación de
-										usuarios en un 25%.
+										usuarios en un 25%
 									</p>
 									<div className="mt-4 flex flex-wrap gap-2">
 										<span className="rounded-full bg-black px-3 py-1 text-xs text-gray-300">
@@ -60,7 +60,7 @@ const Experience = () => {
 										<h3 className="text-xl font-bold text-white">
 											Desarrollador Frontend
 										</h3>
-										<p className="text-gray-400">WebSolutions Ltd.</p>
+										<p className="text-gray-400">WebSolutions Ltd</p>
 									</div>
 									<div className="rounded-full bg-black px-3 py-1 text-sm text-gray-300">
 										2021 - 2023
@@ -71,7 +71,7 @@ const Experience = () => {
 										Desarrollé y mantuve múltiples sitios web y aplicaciones
 										para clientes. Colaboré con diseñadores y desarrolladores
 										backend para entregar productos de alta calidad a tiempo y
-										dentro del presupuesto.
+										dentro del presupuesto
 									</p>
 									<div className="mt-4 flex flex-wrap gap-2">
 										<span className="rounded-full bg-black px-3 py-1 text-xs text-gray-300">
@@ -106,7 +106,7 @@ const Experience = () => {
 										Comencé mi carrera construyendo sitios web responsivos y
 										soluciones de comercio electrónico. Adquirí valiosa
 										experiencia en prácticas modernas de desarrollo web y
-										comunicación con clientes.
+										comunicación con clientes
 									</p>
 									<div className="mt-4 flex flex-wrap gap-2">
 										<span className="rounded-full bg-black px-3 py-1 text-xs text-gray-300">
