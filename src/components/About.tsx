@@ -31,9 +31,9 @@ const About = () => {
 											Desarrollo Frontend
 										</h3>
 										<p className="text-gray-600">
-											Con experiencia en TypeScript, en React y Vue y sus
-											ecosistemas y frameworks CSS para construir interfaces de
-											usuario responsivas e interactivas
+											Con experiencia en TypeScript, React, Vue y frameworks CSS
+											para construir interfaces de usuario rápidas, responsivas
+											e interactivas
 										</p>
 									</div>
 								</li>
