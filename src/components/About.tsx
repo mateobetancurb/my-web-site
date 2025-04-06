@@ -11,7 +11,7 @@ const About = () => {
 							<p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 								Con 4 años de experiencia en desarrollo de software, me
 								especializo en crear aplicaciones web modernas y responsivas que
-								ofrecen experiencias de usuario excepcionales.
+								ofrecen experiencias de usuario excepcionales
 							</p>
 						</div>
 					</div>
@@ -43,8 +43,8 @@ const About = () => {
 											Desarrollo Backend
 										</h3>
 										<p className="text-gray-600">
-											Competente en Node.js, Express, Docker y tecnologías de
-											bases de datos como MySQL y PostgreSQL para crear
+											Con experiencia en Node.js, Express, Docker y tecnologías
+											de bases de datos como MySQL y PostgreSQL para crear
 											aplicaciones robustas del lado del servidor
 										</p>
 									</div>
