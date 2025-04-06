@@ -4,6 +4,7 @@ import { Hero } from "../components/Hero";
 import { About } from "../components/About";
 import { Experience } from "../components/Experience";
 import { Portfolio } from "../components/Portfolio";
+import { Blog } from "../components/Blog";
 
 export const Route = createFileRoute("/")({
 	component: RouteComponent,
@@ -18,6 +19,7 @@ function RouteComponent() {
 				<About />
 				<Experience />
 				<Portfolio />
+				<Blog />
 			</main>
 		</>
 	);
