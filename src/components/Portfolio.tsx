@@ -29,6 +29,10 @@ const Portfolio = () => {
 								description="	Una aplicación web moderna construida con React y Next.js, con diseño
 					      responsivo y una experiencia de usuario fluida"
 								buttonText="Ver más"
+								styles={{
+									container: "bg-[#3C3C3C] rounded-lg shadow",
+									button: "text-white",
+								}}
 							/>
 						))}
 					</div>
