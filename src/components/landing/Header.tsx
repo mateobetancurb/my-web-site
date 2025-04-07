@@ -6,9 +6,9 @@ const Header = () => {
 			<header className="flex justify-center sticky top-0 z-40 w-full border-b bg-black">
 				<div className="container flex h-16 items-center justify-between">
 					<div className="flex items-center gap-2">
-						<Link to="/" className="text-xl font-bold text-white">
+						{/* <Link to="/" className="text-xl font-bold text-white">
 							DevPortfolio
-						</Link>
+						</Link> */}
 					</div>
 					<nav className="hidden md:flex gap-6">
 						<Link
