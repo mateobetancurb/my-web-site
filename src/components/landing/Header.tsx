@@ -11,12 +11,12 @@ const Header = () => {
 						</Link> */}
 					</div>
 					<nav className="hidden md:flex gap-6">
-						<Link
-							to="/"
+						<a
+							href="#hero"
 							className="text-sm font-medium text-white hover:text-gray-300 transition-colors"
 						>
 							Inicio
-						</Link>
+						</a>
 						<a
 							href="#about"
 							className="text-sm font-medium text-white hover:text-gray-300 transition-colors"
