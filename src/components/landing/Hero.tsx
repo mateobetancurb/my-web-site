@@ -1,7 +1,7 @@
 const Hero = () => {
 	return (
 		<section
-			id="inicio"
+			id="hero"
 			className="w-full flex justify-center bg-black py-12 md:py-24 lg:py-32 xl:py-48"
 		>
 			<div className="container px-4 md:px-6">
