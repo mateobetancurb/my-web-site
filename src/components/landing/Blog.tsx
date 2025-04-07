@@ -8,7 +8,7 @@ const Blog = () => {
 				<div className="flex flex-col items-center justify-center space-y-4 text-center">
 					<div className="space-y-2">
 						<h2 className="text-3xl font-bold tracking-tighter text-black sm:text-5xl">
-							Últimos Artículos
+							Últimos artículos
 						</h2>
 						<p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 							Ideas, tutoriales y reflexiones sobre desarrollo, diseño y

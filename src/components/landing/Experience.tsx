@@ -9,7 +9,7 @@ const Experience = () => {
 					<div className="flex flex-col items-center justify-center space-y-4 text-center">
 						<div className="space-y-2">
 							<h2 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
-								Experiencia Laboral
+								Experiencia laboral
 							</h2>
 							<p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 								Mi trayectoria profesional y logros destacados durante los
