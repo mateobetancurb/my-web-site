@@ -6,6 +6,7 @@ import { Experience } from "../components/landing/Experience";
 import { Portfolio } from "../components/landing/Portfolio";
 import { Blog } from "../components/landing/Blog";
 import { Contact } from "../components/landing/Contact";
+import { Footer } from "../components/landing/Footer";
 
 export const Route = createFileRoute("/")({
 	component: RouteComponent,
@@ -23,6 +24,7 @@ function RouteComponent() {
 				<Blog />
 				<Contact />
 			</main>
+			<Footer />
 		</>
 	);
 }
