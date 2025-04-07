@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { Card } from "./ui/Card";
+import { Card } from "../ui/Card";
 
 const Blog = () => {
 	return (
