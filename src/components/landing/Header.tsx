@@ -1,5 +1,5 @@
 import { Link } from "@tanstack/react-router";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const Header = () => {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -7,6 +7,18 @@ const Header = () => {
 	const toggleMenu = () => {
 		setIsMenuOpen(!isMenuOpen);
 	};
+
+	useEffect(() => {
+		if (isMenuOpen) {
+			document.body.classList.add("overflow-hidden");
+		} else {
+			document.body.classList.remove("overflow-hidden");
+		}
+
+		return () => {
+			document.body.classList.remove("overflow-hidden");
+		};
+	}, [isMenuOpen]);
 
 	return (
 		<>
