@@ -1,4 +1,11 @@
 const Hero = () => {
+	const downloadCV = () => {
+		const link = document.createElement("a");
+		const publicURL = window.location.origin;
+		link.href = `${publicURL}/cv/spanish.pdf`;
+		link.download = "cv-mateo-betancur.pdf";
+		link.click();
+	};
 	return (
 		<section
 			id="hero"
@@ -9,7 +16,7 @@ const Hero = () => {
 					<div className="flex items-center justify-center order-first lg:order-last">
 						<div className="relative h-[300px] w-[300px] md:h-[400px] md:w-[400px] overflow-hidden rounded-full border-4 border-white">
 							<img
-								src="/me.webp"
+								src="/images/me.webp"
 								alt="Foto de Mateo"
 								fetchPriority="high"
 								className="w-full h-full object-cover"
@@ -27,11 +34,17 @@ const Hero = () => {
 							</p>
 						</div>
 						<div className="flex flex-col gap-2 min-[400px]:flex-row">
-							<button className="w-full md:w-[130px] cursor-pointer bg-white rounded-md p-2 text-black hover:bg-gray-600 hover:text-white transition-all">
-								Ver mi trabajo
-							</button>
-							<button className="w-full md:w-[130px] cursor-pointer text-white bg-gray-600 rounded-md p-2 border-white hover:bg-white hover:text-black transition-all">
-								Contáctame
+							<a
+								href="#blog"
+								className="w-full text-center md:w-[130px] cursor-pointer bg-white rounded-md p-2 text-black hover:bg-[#3C3C3C] hover:text-white transition-all"
+							>
+								Ir al blog
+							</a>
+							<button
+								onClick={downloadCV}
+								className="w-full md:w-[130px] cursor-pointer text-white bg-[#3C3C3C] rounded-md p-2 border-white hover:bg-white hover:text-black transition-all"
+							>
+								Descargar CV
 							</button>
 						</div>
 					</div>
