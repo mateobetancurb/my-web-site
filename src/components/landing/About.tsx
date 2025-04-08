@@ -18,7 +18,7 @@ const About = () => {
 					<div className="mx-auto grid max-w-5xl items-center gap-6 py-12 lg:grid-cols-2 lg:gap-12">
 						<div className="w-full flex justify-center items-center">
 							<img
-								src="/about-image-bw.webp"
+								src="/images/about-image-bw.webp"
 								alt="Imagen generada por IA de mí"
 								className="rounded-xl w-full h-auto max-w-md object-contain shadow-md"
 								width={400}
