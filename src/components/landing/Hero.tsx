@@ -1,10 +1,12 @@
 const Hero = () => {
-	const downloadCV = () => {
-		const link = document.createElement("a");
-		const publicURL = window.location.origin;
-		link.href = `${publicURL}/cv/spanish.pdf`;
-		link.download = "cv-mateo-betancur.pdf";
-		link.click();
+	const seeCV = () => {
+		try {
+			const publicURL = window.location.origin;
+			const cvUrl = `${publicURL}/cv/cv-mateo-spanish.pdf`;
+			window.open(cvUrl, "_blank");
+		} catch (error) {
+			console.error(error);
+		}
 	};
 	return (
 		<section
@@ -41,10 +43,10 @@ const Hero = () => {
 								Ir al blog
 							</a>
 							<button
-								onClick={downloadCV}
-								className="w-full md:w-[130px] cursor-pointer text-white bg-[#3C3C3C] rounded-md p-2 border-white hover:bg-white hover:text-black transition-all"
+								onClick={seeCV}
+								className="w-full md:w-[130px] cursor-pointer text-white bg-[#3C3C3C] rounded-md p-2 border-white hover:bg-white hover:text-black transition-all disabled:opacity-70 disabled:cursor-not-allowed"
 							>
-								Descargar CV
+								Ver CV
 							</button>
 						</div>
 					</div>
