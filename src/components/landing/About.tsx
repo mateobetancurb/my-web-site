@@ -10,8 +10,9 @@ const About = () => {
 							</h2>
 							<p className="max-w-[900px] text-gray-600 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
 								Con 4 años de experiencia en desarrollo de software, me
-								especializo en crear aplicaciones web modernas y responsivas que
-								ofrecen experiencias de usuario excepcionales
+								especializo en crear aplicaciones web modernas, rápidas,
+								escalables y responsivas que ofrecen excelentes experiencias de
+								usuario
 							</p>
 						</div>
 					</div>
@@ -57,8 +58,9 @@ const About = () => {
 											Diseño UI/UX
 										</h3>
 										<p className="text-gray-600">
-											Hábil en la creación de experiencias de usuario intuitivas
-											y diseños visualmente atractivos que captan a los usuarios
+											Con experiencia en la traducción de diseños a código,
+											utilizando Figma para optimizar y asegurar la fidelidad
+											del diseño en la implementación final
 										</p>
 									</div>
 								</li>
