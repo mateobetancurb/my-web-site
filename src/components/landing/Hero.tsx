@@ -31,8 +31,8 @@ const Hero = () => {
 								Programador Web
 							</h1>
 							<p className="text-center md:text-start max-w-[600px] text-gray-300 md:text-xl mb-5">
-								Creando experiencias digitales hermosas, funcionales y fáciles
-								de usar con 4 años de experiencia profesional.
+								Creando experiencias digitales atractivas y funcionales a través
+								de software
 							</p>
 						</div>
 						<div className="flex flex-col gap-2 min-[400px]:flex-row">
