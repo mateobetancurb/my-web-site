@@ -7,7 +7,7 @@ export const experienceData: ExperienceProps[] = [
 		company: "BBD",
 		dates: "2023 - Actualidad",
 		description:
-			"Como Desarrollador Frontend, mi enfoque está en la creación de interfaces web dinámicas y eficientes utilizando React.js, Next.js, integrando Node.js y AWS para potenciar ciertas funcionalidades y asegurar una infraestructura robusta. Destaco por optimizar el rendimiento, SEO y la experiencia del usuario, incluyendo la integración con servicios de terceros. Tengo experiencia en el desarrollo y mantenimiento de un e-commerce de alto rendimiento",
+			"Como Desarrollador mi enfoque está en la creación de interfaces web dinámicas y eficientes utilizando React.js, Next.js, integrando Node.js y AWS para potenciar ciertas funcionalidades y asegurar una infraestructura robusta. Destaco por optimizar el rendimiento, SEO y la experiencia del usuario, incluyendo la integración con servicios de terceros. Tengo experiencia en el desarrollo y mantenimiento de un e-commerce de alto rendimiento",
 		highlights: [
 			"Implemento interfaces dinámicas con React.js y Vue.js, creando componentes reutilizables para una mayor eficiencia. Utilizo Node.js para el desarrollo y optimización de ciertas funcionalidades de lado del backend",
 			"Optimizo el rendimiento y el SEO implementando SSR y SSG con Next.js y Nuxt.js, resultando en una reducción del tiempo de carga de las vistas internas de la app",
