@@ -13,13 +13,17 @@ const Portfolio = () => {
 							<h2 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
 								Mi portafolio
 							</h2>
-							<p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
+							<p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed mb-4">
 								Explora una selección de mis proyectos recientes que muestran
 								mis habilidades y experiencia
 							</p>
 						</div>
 					</div>
-					<div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
+					<p className="text-gray-300 text-center">
+						Pronto pondré aquí algunos de los proyectos en que he trabajado como
+						freelance
+					</p>
+					{/* <div className="mx-auto grid max-w-5xl grid-cols-1 gap-6 py-12 md:grid-cols-2 lg:grid-cols-3">
 						{[1, 2, 3, 4, 5, 6].map((item) => (
 							<Card
 								key={item}
@@ -35,7 +39,7 @@ const Portfolio = () => {
 								}}
 							/>
 						))}
-					</div>
+					</div> */}
 				</div>
 			</section>
 		</>
