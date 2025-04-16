@@ -4,5 +4,6 @@ export interface ExperienceProps {
 	company: string;
 	dates: string;
 	description: string;
+	highlights: string[];
 	skills: string[];
 }
