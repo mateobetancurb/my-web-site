@@ -1,15 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import {
-	Calendar,
-	Clock,
+	// Calendar,
+	// Clock,
 	Search,
 	ChevronLeft,
 	ChevronRight,
 } from "lucide-react";
 import { Header } from "../components/landing/Header";
 import { Footer } from "../components/landing/Footer";
-import { Card } from "../components/ui/Card";
+// import { Card } from "../components/ui/Card";
 import { blogPosts } from "../data/blog";
 
 export const Route = createFileRoute("/blog")({
@@ -38,20 +38,20 @@ function RouteComponent() {
 	});
 
 	// Pagination logic
-	const indexOfLastPost = currentPage * postsPerPage;
-	const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+	// const indexOfLastPost = currentPage * postsPerPage;
+	// const indexOfFirstPost = indexOfLastPost - postsPerPage;
+	// const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 	const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
 	// Handle category selection
-	const toggleCategory = (category: string) => {
-		setCurrentPage(1); // Reset to first page when filtering
-		if (selectedCategories.includes(category)) {
-			setSelectedCategories(selectedCategories.filter((c) => c !== category));
-		} else {
-			setSelectedCategories([...selectedCategories, category]);
-		}
-	};
+	// const toggleCategory = (category: string) => {
+	// 	setCurrentPage(1); // Reset to first page when filtering
+	// 	if (selectedCategories.includes(category)) {
+	// 		setSelectedCategories(selectedCategories.filter((c) => c !== category));
+	// 	} else {
+	// 		setSelectedCategories([...selectedCategories, category]);
+	// 	}
+	// };
 
 	// Clear all filters
 	const clearFilters = () => {
@@ -62,9 +62,9 @@ function RouteComponent() {
 	// Sample blog data
 
 	// Extract all unique categories
-	const allCategories = Array.from(
-		new Set(blogPosts.flatMap((post) => post.categories))
-	).sort();
+	// const allCategories = Array.from(
+	// 	new Set(blogPosts.flatMap((post) => post.categories))
+	// ).sort();
 
 	return (
 		<div className="flex min-h-screen flex-col">
@@ -155,7 +155,7 @@ function RouteComponent() {
 					<div className="container mx-auto px-4 md:px-6">
 						{filteredPosts.length > 0 ? (
 							<>
-								<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+								{/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 									{currentPosts.map((post) => (
 										<Card key={post.id} className="overflow-hidden">
 											<div className="relative h-48 w-full">
@@ -179,7 +179,7 @@ function RouteComponent() {
 											</div>
 										</Card>
 									))}
-								</div>
+								</div> */}
 
 								{/* Pagination */}
 								{totalPages > 1 && (
