@@ -28,8 +28,9 @@ const Experience = () => {
 									key={item.id}
 									title={item.title}
 									company={item.company}
-									description={item.description}
 									dates={item.dates}
+									description={item.description}
+									highlights={item.highlights}
 									skills={item.skills}
 								/>
 							))}
