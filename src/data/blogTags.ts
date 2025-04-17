@@ -1,0 +1,16 @@
+export const blogTags = [
+	"Accesibilidad",
+	"Frontend",
+	"Backend",
+	"React",
+	"Vue",
+	"Performance",
+	"Estados globales",
+	"CSS",
+	"Tailwind",
+	"LLMs",
+	"Inteligencia Artificial",
+	"APIs",
+	"Node",
+	"TypeScript",
+];
