@@ -2,8 +2,9 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
 import { Header } from "../components/landing/Header";
 import { Footer } from "../components/landing/Footer";
-// import { Card } from "../components/ui/Card";
+import { Card } from "../components/ui/Card";
 import { blogPosts } from "../data/blog";
+import { blogTags } from "../data/blogTags";
 
 export const Route = createFileRoute("/blog")({
 	component: RouteComponent,
@@ -31,9 +32,9 @@ function RouteComponent() {
 	});
 
 	// Pagination logic
-	// const indexOfLastPost = currentPage * postsPerPage;
-	// const indexOfFirstPost = indexOfLastPost - postsPerPage;
-	// const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+	const indexOfLastPost = currentPage * postsPerPage;
+	const indexOfFirstPost = indexOfLastPost - postsPerPage;
+	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 	const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
 	const toggleCategory = (category: string) => {
@@ -50,10 +51,6 @@ function RouteComponent() {
 		setSelectedCategories([]);
 		setCurrentPage(1);
 	};
-
-	const allCategories = Array.from(
-		new Set(blogPosts.flatMap((post) => post.categories))
-	).sort();
 
 	return (
 		<div className="flex min-h-screen flex-col">
@@ -133,7 +130,7 @@ function RouteComponent() {
 
 						{/* filters */}
 						<div className="mt-4 flex flex-wrap gap-2">
-							{allCategories.map((category) => (
+							{blogTags.map((category) => (
 								<span
 									key={category}
 									className={`cursor-pointer text-[12px] rounded-full px-2 font-medium ${
@@ -150,12 +147,12 @@ function RouteComponent() {
 
 						{/* results */}
 						<div className="mt-4 text-sm text-gray-600">
-							Mostrando {filteredPosts.length}{" "}
+							{filteredPosts.length}{" "}
 							{filteredPosts.length === 1 ? "artículo" : "artículos"}
 							{selectedCategories.length > 0 && (
 								<span> in {selectedCategories.join(", ")}</span>
 							)}
-							{searchQuery && <span> matching "{searchQuery}"</span>}
+							{searchQuery && <span> coincide con "{searchQuery}"</span>}
 						</div>
 					</div>
 				</section>
@@ -165,31 +162,23 @@ function RouteComponent() {
 					<div className="container mx-auto px-4 md:px-6">
 						{filteredPosts.length > 0 ? (
 							<>
-								{/* <div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+								<div className="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
 									{currentPosts.map((post) => (
-										<Card key={post.id} className="overflow-hidden">
-											<div className="relative h-48 w-full">
-												<img
-													src={post.image}
-													alt={post.title}
-													className="h-full w-full object-cover"
-												/>
-											</div>
-											<div className="p-4">
-												<h2 className="text-lg font-bold">{post.title}</h2>
-												<p className="mt-2 text-sm text-gray-600">
-													{post.excerpt}
-												</p>
-												<div className="mt-4 flex items-center space-x-2 text-xs text-gray-500">
-                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
-													<span>{post.date}</span>
-                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-clock-icon lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-													<span>{post.readTime}</span>
-												</div>
-											</div>
-										</Card>
+										<Card
+											key={post.id}
+											image={post.image}
+											title={post.title}
+											description={post.excerpt}
+											categories={post.categories}
+											buttonText="Leer artículo"
+											styles={{
+												container: "bg-white border border-gray-200 shadow",
+												title: "text-black",
+												description: "text-black",
+											}}
+										/>
 									))}
-								</div> */}
+								</div>
 
 								{/* pagination */}
 								{totalPages > 1 && (
@@ -199,6 +188,7 @@ function RouteComponent() {
 												setCurrentPage(Math.max(1, currentPage - 1))
 											}
 											disabled={currentPage === 1}
+											className="cursor-pointer"
 										>
 											<svg
 												width="24"
@@ -220,8 +210,8 @@ function RouteComponent() {
 													key={page}
 													className={
 														currentPage === page
-															? "bg-black hover:bg-gray-800"
-															: ""
+															? "bg-black text-white px-3 py-2 rounded-md hover:bg-gray-800"
+															: "cursor-pointer"
 													}
 													onClick={() => setCurrentPage(page)}
 												>
@@ -234,6 +224,7 @@ function RouteComponent() {
 												setCurrentPage(Math.min(totalPages, currentPage + 1))
 											}
 											disabled={currentPage === totalPages}
+											className="cursor-pointer"
 										>
 											<svg
 												width="24"
@@ -257,14 +248,29 @@ function RouteComponent() {
 								<h3 className="text-xl font-bold">
 									No se encontraron artículos
 								</h3>
-								<p className="mt-2 text-gray-600">
+								<p className="mt-2 text-gray-600 mb-3">
 									Elimina o modifica el filtro y vuelve a intentar
 								</p>
 								<button
-									className="mt-4 bg-black text-white hover:bg-gray-800"
 									onClick={clearFilters}
+									className="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
 								>
-									Limpiar todos los filtros
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="#800000"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="lucide lucide-trash-icon lucide-trash"
+									>
+										<path d="M3 6h18" />
+										<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+										<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+									</svg>
+									Borrar filtros
 								</button>
 							</div>
 						)}
