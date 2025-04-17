@@ -3,7 +3,7 @@ interface CardProps {
 	title: string;
 	subtitle?: string;
 	description: string;
-	categories: string[];
+	categories?: string[];
 	buttonText: string;
 	styles?: {
 		container?: string;
@@ -42,7 +42,7 @@ const Card = ({
 			</div>
 			<div className={`p-6 ${styles.contentContainer || ""}`}>
 				<div className="flex gap-2">
-					{categories.map((category) => (
+					{categories?.map((category) => (
 						<span
 							key={category}
 							className="bg-[#F3F4F6] text-black  inline-block mb-3 text-[12px] rounded-full px-2 font-medium"
