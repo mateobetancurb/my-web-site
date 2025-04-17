@@ -1,12 +1,5 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-// import {
-// 	Calendar,
-// 	Clock,
-// 	Search,
-// 	ChevronLeft,
-// 	ChevronRight,
-// } from "lucide-react";
 import { Header } from "../components/landing/Header";
 import { Footer } from "../components/landing/Footer";
 // import { Card } from "../components/ui/Card";
@@ -43,61 +36,68 @@ function RouteComponent() {
 	// const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
 	const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
 
-	// Handle category selection
-	// const toggleCategory = (category: string) => {
-	// 	setCurrentPage(1); // Reset to first page when filtering
-	// 	if (selectedCategories.includes(category)) {
-	// 		setSelectedCategories(selectedCategories.filter((c) => c !== category));
-	// 	} else {
-	// 		setSelectedCategories([...selectedCategories, category]);
-	// 	}
-	// };
+	const toggleCategory = (category: string) => {
+		setCurrentPage(1);
+		if (selectedCategories.includes(category)) {
+			setSelectedCategories(selectedCategories.filter((c) => c !== category));
+		} else {
+			setSelectedCategories([...selectedCategories, category]);
+		}
+	};
 
-	// Clear all filters
 	const clearFilters = () => {
 		setSearchQuery("");
 		setSelectedCategories([]);
 		setCurrentPage(1);
 	};
-	// Sample blog data
 
-	// Extract all unique categories
-	// const allCategories = Array.from(
-	// 	new Set(blogPosts.flatMap((post) => post.categories))
-	// ).sort();
+	const allCategories = Array.from(
+		new Set(blogPosts.flatMap((post) => post.categories))
+	).sort();
 
 	return (
 		<div className="flex min-h-screen flex-col">
 			<Header />
-
 			<main className="flex-1">
-				{/* Blog Header */}
 				<section className="w-full bg-black py-12 md:py-16">
 					<div className="container mx-auto px-4 md:px-6">
 						<div className="flex flex-col items-center justify-center space-y-4 text-center">
 							<div className="space-y-2">
-								<h1 className="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
-									Blog Articles
+								<h1 className="text-3xl mb-5 font-bold tracking-tighter text-white sm:text-5xl">
+									Blog
 								</h1>
 								<p className="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed">
-									Insights, tutorials, and thoughts on development, design, and
-									technology.
+									Reflexiones, tutoriales y benchmarks sobre desarrollo de
+									software e inteligencia artificial
 								</p>
 							</div>
 						</div>
 					</div>
 				</section>
 
-				{/* Search and Filters */}
+				{/* input and filters */}
 				<section className="w-full bg-gray-100 py-6">
-					<div className="container px-4 md:px-6">
+					<div className="container mx-auto px-4 md:px-6">
 						<div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-							<div className="relative w-full md:max-w-sm">
-								{/* <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500" /> */}
+							<div className="relative w-full md:max-w-sm ">
+								<svg
+									width="24"
+									height="24"
+									viewBox="0 0 24 24"
+									fill="none"
+									stroke="currentColor"
+									strokeWidth="2"
+									strokeLinecap="round"
+									strokeLinejoin="round"
+									className="lucide lucide-search-icon lucide-search absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
+								>
+									<circle cx="11" cy="11" r="8" />
+									<path d="m21 21-4.3-4.3" />
+								</svg>
 								<input
 									type="search"
-									placeholder="Search articles..."
-									className="pl-10"
+									placeholder="Buscar artículos..."
+									className="pl-10 w-full bg-white rounded-md p-2 text-sm shadow-sm"
 									value={searchQuery}
 									onChange={(e) => {
 										setSearchQuery(e.target.value);
@@ -106,42 +106,52 @@ function RouteComponent() {
 								/>
 							</div>
 
-							<div className="flex items-center gap-2">
-								<span className="text-sm font-medium">Filters:</span>
-								{selectedCategories.length > 0 ? (
-									<button onClick={clearFilters} className="h-8 text-xs">
-										Clear All
-									</button>
-								) : null}
-							</div>
+							{selectedCategories.length > 0 ? (
+								<button
+									onClick={clearFilters}
+									className="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
+								>
+									<svg
+										width="20"
+										height="20"
+										viewBox="0 0 24 24"
+										fill="none"
+										stroke="#800000"
+										strokeWidth="2"
+										strokeLinecap="round"
+										strokeLinejoin="round"
+										className="lucide lucide-trash-icon lucide-trash"
+									>
+										<path d="M3 6h18" />
+										<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+										<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+									</svg>
+									Borrar filtros
+								</button>
+							) : null}
 						</div>
 
-						{/* Category Filters */}
-						{/* <div className="mt-4 flex flex-wrap gap-2">
+						{/* filters */}
+						<div className="mt-4 flex flex-wrap gap-2">
 							{allCategories.map((category) => (
-								<Badge
+								<span
 									key={category}
-									variant={
+									className={`cursor-pointer text-[12px] rounded-full px-2 font-medium ${
 										selectedCategories.includes(category)
-											? "default"
-											: "outline"
-									}
-									className={`cursor-pointer ${
-										selectedCategories.includes(category)
-											? "bg-black hover:bg-gray-800"
-											: "hover:bg-gray-200"
+											? "bg-black hover:bg-gray-800 text-white"
+											: "hover:bg-gray-200 border border-gray-200"
 									}`}
 									onClick={() => toggleCategory(category)}
 								>
 									{category}
-								</Badge>
+								</span>
 							))}
-						</div> */}
+						</div>
 
-						{/* Results summary */}
+						{/* results */}
 						<div className="mt-4 text-sm text-gray-600">
-							Showing {filteredPosts.length}{" "}
-							{filteredPosts.length === 1 ? "article" : "articles"}
+							Mostrando {filteredPosts.length}{" "}
+							{filteredPosts.length === 1 ? "artículo" : "artículos"}
 							{selectedCategories.length > 0 && (
 								<span> in {selectedCategories.join(", ")}</span>
 							)}
@@ -150,7 +160,7 @@ function RouteComponent() {
 					</div>
 				</section>
 
-				{/* Blog Posts Grid */}
+				{/* blog  */}
 				<section className="w-full bg-white py-12">
 					<div className="container mx-auto px-4 md:px-6">
 						{filteredPosts.length > 0 ? (
@@ -171,9 +181,9 @@ function RouteComponent() {
 													{post.excerpt}
 												</p>
 												<div className="mt-4 flex items-center space-x-2 text-xs text-gray-500">
-													<Calendar className="h-4 w-4" />
+                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
 													<span>{post.date}</span>
-													<Clock className="h-4 w-4" />
+                          <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" class="lucide lucide-clock-icon lucide-clock"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
 													<span>{post.readTime}</span>
 												</div>
 											</div>
@@ -181,7 +191,7 @@ function RouteComponent() {
 									))}
 								</div> */}
 
-								{/* Pagination */}
+								{/* pagination */}
 								{totalPages > 1 && (
 									<div className="mt-8 flex items-center justify-center gap-2">
 										<button
@@ -190,7 +200,19 @@ function RouteComponent() {
 											}
 											disabled={currentPage === 1}
 										>
-											{/* <ChevronLeft className="h-4 w-4" /> */}
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className=" h-4 w-4 lucide lucide-chevron-left-icon lucide-chevron-left"
+											>
+												<path d="m15 18-6-6 6-6" />
+											</svg>
 										</button>
 										{Array.from({ length: totalPages }, (_, i) => i + 1).map(
 											(page) => (
@@ -213,23 +235,36 @@ function RouteComponent() {
 											}
 											disabled={currentPage === totalPages}
 										>
-											{/* <ChevronRight className="h-4 w-4" /> */}
+											<svg
+												width="24"
+												height="24"
+												viewBox="0 0 24 24"
+												fill="none"
+												stroke="currentColor"
+												strokeWidth="2"
+												strokeLinecap="round"
+												strokeLinejoin="round"
+												className="lucide lucide-chevron-right-icon lucide-chevron-right h-4 w-4"
+											>
+												<path d="m9 18 6-6-6-6" />
+											</svg>
 										</button>
 									</div>
 								)}
 							</>
 						) : (
 							<div className="flex flex-col items-center justify-center py-12 text-center">
-								<h3 className="text-xl font-bold">No articles found</h3>
+								<h3 className="text-xl font-bold">
+									No se encontraron artículos
+								</h3>
 								<p className="mt-2 text-gray-600">
-									Try adjusting your search or filter criteria to find what
-									you're looking for.
+									Elimina o modifica el filtro y vuelve a intentar
 								</p>
 								<button
 									className="mt-4 bg-black text-white hover:bg-gray-800"
 									onClick={clearFilters}
 								>
-									Clear All Filters
+									Limpiar todos los filtros
 								</button>
 							</div>
 						)}
