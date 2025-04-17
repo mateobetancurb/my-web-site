@@ -10,8 +10,6 @@ export const Route = createFileRoute("/blog")({
 	component: RouteComponent,
 });
 
-export default function BlogPage() {}
-
 function RouteComponent() {
 	const [searchQuery, setSearchQuery] = useState("");
 	const [selectedCategories, setSelectedCategories] = useState<string[]>([]);
