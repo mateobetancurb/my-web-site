@@ -1,8 +1,9 @@
 interface CardProps {
 	image: string;
 	title: string;
-	subtitle: string;
+	subtitle?: string;
 	description: string;
+	categories: string[];
 	buttonText: string;
 	styles?: {
 		container?: string;
@@ -20,6 +21,7 @@ const Card = ({
 	title,
 	subtitle,
 	description,
+	categories,
 	buttonText,
 	styles = {},
 }: CardProps) => {
@@ -35,11 +37,20 @@ const Card = ({
 				}`}
 			>
 				<div className="h-48 bg-white flex items-center justify-center">
-					{/* <img src="" alt="" /> */}
-					<span className="text-gray-500">Imagen del Proyecto {image}</span>
+					<img src={image} alt={title} />
 				</div>
 			</div>
 			<div className={`p-6 ${styles.contentContainer || ""}`}>
+				<div className="flex gap-2">
+					{categories.map((category) => (
+						<span
+							key={category}
+							className="bg-[#F3F4F6] text-black  inline-block mb-3 text-[12px] rounded-full px-2 font-medium"
+						>
+							{category}
+						</span>
+					))}
+				</div>
 				<div className="mb-2">
 					<h3 className={`text-xl font-bold ${styles.title || ""}`}>{title}</h3>
 					<p className={`text-gray-400 text-sm ${styles.subtitle || ""}`}>
@@ -48,10 +59,9 @@ const Card = ({
 				</div>
 			</div>
 			<div className="px-6 pb-4 flex-grow">
-				<p className={`text-gray-300 ${styles.description || ""}`}>
-					{description}
-				</p>
+				<p className={`${styles.description || ""}`}>{description}</p>
 			</div>
+
 			<div className="px-6 pb-6">
 				<button
 					className={`cursor-pointer w-full rounded-md py-2 px-4 bg-black transition-all duration-200 transform hover:scale-105 hover:translate-y-[-1px] active:translate-y-[1px] ${
