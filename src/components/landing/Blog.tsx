@@ -20,7 +20,7 @@ const Blog = () => {
 					{[1, 2, 3].map((item) => (
 						<Card
 							key={item}
-							image="..."
+							image="https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 							title="Técnicas Modernas de Desarrollo Web"
 							subtitle="1 de abril, 2025 - 5 min de lectura"
 							description="Explorando las últimas tendencias y mejores prácticas en desarrollo web moderno para construir aplicaciones más rápidas y eficientes."
