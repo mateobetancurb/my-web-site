@@ -27,9 +27,12 @@ const Hero = () => {
 					</div>
 					<div className="flex flex-col justify-center space-y-4 order-last lg:order-first">
 						<div className="space-y-2">
-							<h1 className="text-center md:text-start text-3xl font-bold tracking-tighter text-white sm:text-5xl xl:text-6xl/none mb-5">
-								Programador Web
+							<h1 className="text-center md:text-start text-3xl font-bold tracking-wider text-white sm:text-5xl xl:text-6xl/none md:mb-5">
+								Hola, soy Mateo
 							</h1>
+							<h2 className="text-white text-center md:text-start text-lg md:text-4xl  font-bold mb-5">
+								Programador web
+							</h2>
 							<p className="text-center md:text-start max-w-[600px] text-gray-300 md:text-xl mb-5">
 								Creando experiencias digitales atractivas y funcionales a través
 								de software
