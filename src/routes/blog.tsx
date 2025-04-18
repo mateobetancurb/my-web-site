@@ -16,7 +16,7 @@ function RouteComponent() {
 	const [currentPage, setCurrentPage] = useState(1);
 	const postsPerPage = 6;
 
-	// Filter posts based on search query and selected categories
+	// filter and search funcionality
 	const filteredPosts = blogPosts.filter((post) => {
 		const matchesSearch =
 			post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
@@ -29,7 +29,7 @@ function RouteComponent() {
 		return matchesSearch && matchesCategories;
 	});
 
-	// Pagination logic
+	// pagination
 	const indexOfLastPost = currentPage * postsPerPage;
 	const indexOfFirstPost = indexOfLastPost - postsPerPage;
 	const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
@@ -104,7 +104,7 @@ function RouteComponent() {
 							{selectedCategories.length > 0 ? (
 								<button
 									onClick={clearFilters}
-									className="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
+									className="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000] w-fit"
 								>
 									<svg
 										width="20"
@@ -148,7 +148,7 @@ function RouteComponent() {
 							{filteredPosts.length}{" "}
 							{filteredPosts.length === 1 ? "artículo" : "artículos"}
 							{selectedCategories.length > 0 && (
-								<span> in {selectedCategories.join(", ")}</span>
+								<span> en {selectedCategories.join(", ")}</span>
 							)}
 							{searchQuery && <span> coincide con "{searchQuery}"</span>}
 						</div>
