@@ -3,7 +3,7 @@ import { Header } from "../components/landing/Header";
 import { Hero } from "../components/landing/Hero";
 import { About } from "../components/landing/About";
 import { Experience } from "../components/landing/Experience";
-import { Portfolio } from "../components/landing/Portfolio";
+// import { Portfolio } from "../components/landing/Portfolio";
 import { Blog } from "../components/landing/Blog";
 import { Contact } from "../components/landing/Contact";
 import { Footer } from "../components/landing/Footer";
@@ -20,7 +20,7 @@ function RouteComponent() {
 				<Hero />
 				<About />
 				<Experience />
-				<Portfolio />
+				{/* <Portfolio /> */}
 				<Blog />
 				<Contact />
 			</main>
