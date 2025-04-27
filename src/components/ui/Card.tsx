@@ -1,7 +1,7 @@
 interface CardProps {
 	image: string;
 	title: string;
-	date: string;
+	date?: string;
 	subtitle?: string;
 	description: string;
 	categories?: string[];
