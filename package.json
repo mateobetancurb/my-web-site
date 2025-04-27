@@ -4,8 +4,9 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "vite",
-    "build": "tsc -b && vite build",
+    "dev": "pnpm generate-posts && vite",
+    "build": "pnpm generate-posts && tsc -b && vite build",
+    "generate-posts": "node scripts/generate-blog-data.mjs",
     "lint": "eslint .",
     "preview": "vite preview"
   },
