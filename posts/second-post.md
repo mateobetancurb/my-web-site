@@ -4,7 +4,7 @@ date: "20 abril 2025"
 author: "Mateo"
 slug: "my-second-post"
 excerpt: "lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua"
-categories: ["Vue"]
+categories: ["Vue", "React"]
 image: "https://images.pexels.com/photos/546819/pexels-photo-546819.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
 ---
 
