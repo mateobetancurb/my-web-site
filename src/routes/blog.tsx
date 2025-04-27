@@ -3,7 +3,7 @@ import { useState } from "react";
 import { Header } from "../components/landing/Header";
 import { Footer } from "../components/landing/Footer";
 import { Card } from "../components/ui/Card";
-import { blogPosts } from "../data/blog";
+import { generatedBlogPosts } from "../data/blogPosts.generated";
 import { blogTags } from "../data/blogTags";
 
 export const Route = createFileRoute("/blog")({
@@ -17,7 +17,8 @@ function RouteComponent() {
 	const postsPerPage = 6;
 
 	// filter and search funcionality
-	const filteredPosts = blogPosts.filter((post) => {
+	// Use the generated blog posts
+	const filteredPosts = generatedBlogPosts.filter((post) => {
 		const matchesSearch =
 			post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
 			post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
@@ -167,6 +168,7 @@ function RouteComponent() {
 											image={post.image}
 											title={post.title}
 											description={post.excerpt}
+											date={post.date}
 											categories={post.categories}
 											buttonText="Leer artículo"
 											styles={{
