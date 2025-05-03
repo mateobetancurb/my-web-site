@@ -1,0 +1,144 @@
+<header class="flex justify-center sticky top-0 z-40 w-full border-b bg-black">
+	<div class="container flex h-16 items-center justify-end px-4">
+		<nav class="hidden md:flex gap-6">
+			<a
+				href="#hero"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Inicio
+			</a>
+			<a
+				href="#about"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Sobre mí
+			</a>
+			<a
+				href="#experience"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Experiencia
+			</a>
+			<a
+				href="#portfolio"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Portafolio
+			</a>
+			<a
+				href="/blog"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Blog
+			</a>
+			<a
+				href="#contact"
+				class="text-sm font-medium text-white hover:text-gray-300 transition-colors"
+			>
+				Contacto
+			</a>
+		</nav>
+		<button
+			id="menu-toggle-button"
+			class="md:hidden pr-5 text-white focus:outline-none"
+			aria-label="Toggle menu"
+			aria-expanded="false"
+		>
+			<svg
+				viewBox="0 0 24 24"
+				fill="none"
+				stroke="currentColor"
+				stroke-width="2"
+				stroke-linecap="round"
+				stroke-linejoin="round"
+				class="h-9 w-9 transition-transform duration-300 ease-in-out"
+			>
+				<line x1="4" x2="20" y1="12" y2="12"></line>
+				<line x1="4" x2="20" y1="6" y2="6"></line>
+				<line x1="4" x2="20" y1="18" y2="18"></line>
+			</svg>
+		</button>
+	</div>
+</header>
+
+<div
+	id="mobile-menu"
+	class="md:hidden fixed inset-0 z-30 bg-black bg-opacity-90 transition-all duration-300 ease-in-out opacity-0 -translate-y-full pointer-events-none"
+>
+	<div class="flex flex-col items-center pt-20 h-full">
+		<a
+			href="#hero"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Inicio
+		</a>
+		<a
+			href="#about"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Sobre mí
+		</a>
+		<a
+			href="#experience"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Experiencia
+		</a>
+		<a
+			href="#portfolio"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Portafolio
+		</a>
+		<a
+			href="/blog"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Blog
+		</a>
+		<a
+			href="#contact"
+			class="menu-link w-full text-center py-4 text-lg font-medium text-white hover:bg-gray-800 transition-colors"
+		>
+			Contacto
+		</a>
+	</div>
+</div>
+
+<script>
+	const menuToggleButton = document.getElementById("menu-toggle-button");
+	const mobileMenu = document.getElementById("mobile-menu");
+	const menuLinks = mobileMenu?.querySelectorAll(".menu-link");
+
+	let isMenuOpen = false;
+
+	const toggleMenu = () => {
+		isMenuOpen = !isMenuOpen;
+
+		menuToggleButton?.setAttribute("aria-expanded", String(isMenuOpen));
+
+		if (mobileMenu) {
+			mobileMenu.classList.toggle("opacity-0", !isMenuOpen);
+			mobileMenu.classList.toggle("-translate-y-full", !isMenuOpen);
+			mobileMenu.classList.toggle("pointer-events-none", !isMenuOpen);
+			mobileMenu.classList.toggle("opacity-100", isMenuOpen);
+			mobileMenu.classList.toggle("translate-y-0", isMenuOpen);
+		}
+
+		if (isMenuOpen) {
+			document.body.classList.add("overflow-hidden");
+		} else {
+			document.body.classList.remove("overflow-hidden");
+		}
+	};
+
+	menuToggleButton?.addEventListener("click", toggleMenu);
+
+	menuLinks?.forEach((link) => {
+		link.addEventListener("click", () => {
+			if (isMenuOpen) {
+				toggleMenu();
+			}
+		});
+	});
+</script>
