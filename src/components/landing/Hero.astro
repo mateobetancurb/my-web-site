@@ -1,0 +1,78 @@
+<section
+	id="hero"
+	class="w-full flex justify-center bg-black py-12 md:py-24 lg:py-32 xl:py-48"
+>
+	<div class="container px-4 md:px-6">
+		<div
+			class="grid gap-6 lg:grid-cols-[1fr_400px] lg:gap-12 xl:grid-cols-[1fr_600px]"
+		>
+			<div class="flex items-center justify-center order-first lg:order-last">
+				<div
+					class="relative h-[300px] w-[300px] md:h-[400px] md:w-[400px] overflow-hidden rounded-full border-4 border-white"
+				>
+					<img
+						src="/images/me.webp"
+						alt="Foto de Mateo"
+						fetchpriority="high"
+						class="w-full h-full object-cover"
+					/>
+				</div>
+			</div>
+			<div
+				class="flex flex-col justify-center space-y-4 order-last lg:order-first"
+			>
+				<div class="space-y-2">
+					<h1
+						class="text-center md:text-start text-3xl font-bold tracking-wider text-white sm:text-5xl xl:text-6xl/none md:mb-5"
+					>
+						Hola, soy Mateo
+					</h1>
+					<h2
+						class="text-white text-center md:text-start text-lg md:text-3xl font-bold mb-5"
+					>
+						Programador web
+					</h2>
+					<p
+						class="text-center md:text-start max-w-[600px] text-gray-300 md:text-xl mb-5"
+					>
+						Creando experiencias digitales atractivas y funcionales a través de
+						software
+					</p>
+				</div>
+				<div class="flex flex-col gap-2 min-[400px]:flex-row">
+					<a
+						href="#blog"
+						class="w-full text-center md:w-[130px] cursor-pointer bg-white rounded-md p-2 text-black hover:bg-[#3C3C3C] hover:text-white transition-all"
+					>
+						Ir al blog
+					</a>
+					<button
+						id="cv-button"
+						class="w-full md:w-[130px] cursor-pointer text-white bg-[#3C3C3C] rounded-md p-2 border-white hover:bg-white hover:text-black transition-all disabled:opacity-70 disabled:cursor-not-allowed"
+					>
+						Ver CV
+					</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</section>
+
+<script>
+	const seeCV = () => {
+		try {
+			const publicURL = window.location.origin;
+			const cvUrl = `${publicURL}/cv/mateobetancur-spanish-cv.pdf`;
+			window.open(cvUrl, "_blank");
+		} catch (error) {
+			console.error(error);
+		}
+	};
+
+	const cvButton = document.getElementById("cv-button");
+	if (cvButton) {
+		cvButton.addEventListener("click", seeCV);
+	} else {
+		console.error("CV button not found");
+	}
+</script>
