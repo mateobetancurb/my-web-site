@@ -1,0 +1,55 @@
+---
+import type { ExperienceProps } from "../../interfaces/experience";
+
+const { title, company, dates, description, highlights, skills } =
+	Astro.props as ExperienceProps;
+---
+
+<div class="rounded-lg border bg-[#3C3C3C] p-6">
+	<div class="flex flex-col justify-between gap-4 md:flex-row md:items-center">
+		<div>
+			<h3 class="text-xl font-bold text-white">{title}</h3>
+			<p class="text-gray-400">{company}</p>
+		</div>
+		<div class="rounded-full bg-black px-3 py-1 text-sm text-gray-300">
+			{dates}
+		</div>
+	</div>
+	<div class="mt-4">
+		<p class="text-gray-300 mb-5">{description}</p>
+		<div>
+			{
+				highlights.map((item) => (
+					<div data-key={item} class="flex mb-3 gap-2 text-gray-300">
+						<svg
+							width="24"
+							height="24"
+							viewBox="0 0 24 24"
+							fill="none"
+							stroke="currentColor"
+							stroke-width="2"
+							stroke-linecap="round"
+							stroke-linejoin="round"
+							class="lucide lucide-check-icon lucide-check"
+						>
+							<path d="M20 6 9 17l-5-5" />
+						</svg>
+						{item}
+					</div>
+				))
+			}
+		</div>
+		<div class="mt-4 flex flex-wrap gap-2">
+			{
+				skills.map((skill) => (
+					<span
+						data-key={skill}
+						class="rounded-full bg-black px-3 py-1 text-sm text-gray-300"
+					>
+						{skill}
+					</span>
+				))
+			}
+		</div>
+	</div>
+</div>
