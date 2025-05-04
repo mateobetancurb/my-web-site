@@ -1,0 +1,42 @@
+---
+import { experienceData } from "../../../data/experience";
+import ExperienceCard from "../ui/ExperienceCard.astro";
+---
+
+<section id="experience" class="w-full bg-black py-12 md:py-24 lg:py-32">
+	<div class="container mx-auto px-4 md:px-6">
+		<div
+			class="flex flex-col items-center justify-center space-y-4 text-center"
+		>
+			<div class="space-y-2">
+				<h2 class="text-3xl font-bold tracking-tighter text-white sm:text-5xl">
+					Experiencia laboral
+				</h2>
+				<p
+					class="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+				>
+					Mi trayectoria profesional y logros destacados durante los últimos 4
+					años
+				</p>
+			</div>
+		</div>
+		<div class="mx-auto max-w-5xl py-12">
+			<div class="space-y-8">
+				{
+					experienceData.map((item) => (
+						<ExperienceCard
+							id={item.id}
+							key={item.id}
+							title={item.title}
+							company={item.company}
+							dates={item.dates}
+							description={item.description}
+							highlights={item.highlights}
+							skills={item.skills}
+						/>
+					))
+				}
+			</div>
+		</div>
+	</div>
+</section>
