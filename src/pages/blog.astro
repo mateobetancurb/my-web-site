@@ -2,6 +2,7 @@
 import Layout from "../layouts/Layout.astro";
 import { blogTags } from "../data/blogTags";
 import BlogFilter from "../components/BlogFilter.tsx";
+import Card from "../components/ui/Card.astro";
 
 const allPostsData = await Promise.all(
 	Object.entries(import.meta.glob("./posts/*.md", { eager: true })).map(
@@ -55,6 +56,63 @@ const posts = allPostsData.map((post) => ({
 				</div>
 			</section>
 			<BlogFilter client:load posts={posts} tags={blogTags} />
+			<section class="w-full bg-white py-12">
+				<div class="container mx-auto px-4 md:px-6">
+					<div
+						id="blog-posts-container"
+						class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3"
+					>
+						{
+							posts.map((post) => (
+								<div
+									id={`post-${post.id.replace(/[^a-zA-Z0-9-_]/g, "-")}`}
+									class="blog-card"
+								>
+									<Card
+										image={post.image}
+										title={post.title}
+										description={post.excerpt}
+										categories={post.categories}
+										buttonText="Leer más"
+										buttonLink={post.url}
+									/>
+								</div>
+							))
+						}
+					</div>
+					<div
+						id="no-results"
+						class="flex flex-col items-center justify-center py-12 text-center"
+						style="display: none;"
+					>
+						<h3 class="text-xl font-bold">No se encontraron artículos</h3>
+						<p class="mt-2 text-gray-600 mb-3">
+							Elimina o modifica el filtro y vuelve a intentar
+						</p>
+						<button
+							id="clear-filters-no-results-button"
+							class="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="#800000"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-trash-icon lucide-trash"
+							>
+								<path d="M3 6h18"></path>
+								<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+								<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+							</svg>
+							Borrar filtros
+						</button>
+					</div>
+				</div>
+			</section>
 		</main>
 	</div>
 </Layout>
