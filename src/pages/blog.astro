@@ -1,7 +1,7 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import Card from "../components/ui/Card.astro";
 import { blogTags } from "../data/blogTags";
+import BlogFilter from "../components/BlogFilter.tsx";
 
 const allPostsData = await Promise.all(
 	Object.entries(import.meta.glob("./posts/*.md", { eager: true })).map(
@@ -54,132 +54,7 @@ const posts = allPostsData.map((post) => ({
 					</div>
 				</div>
 			</section>
-
-			{/* input and filters */}
-			<section class="w-full bg-gray-100 py-6">
-				<div class="container mx-auto px-4 md:px-6">
-					<div
-						class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
-					>
-						<div class="relative w-full md:max-w-sm">
-							<svg
-								width="24"
-								height="24"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="currentColor"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="lucide lucide-search-icon lucide-search absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
-							>
-								<circle cx="11" cy="11" r="8"></circle>
-								<path d="m21 21-4.3-4.3"></path>
-							</svg>
-							<input
-								type="search"
-								id="search-input"
-								placeholder="Buscar artículos..."
-								class="pl-10 w-full bg-white rounded-md p-2 text-sm shadow-sm"
-							/>
-						</div>
-
-						<button
-							id="clear-filters-button"
-							style="display: none;"
-							class="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000] w-fit"
-						>
-							<svg
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="#800000"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="lucide lucide-trash-icon lucide-trash"
-							>
-								<path d="M3 6h18"></path>
-								<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-								<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-							</svg>
-							Borrar filtros
-						</button>
-					</div>
-
-					{/* filters */}
-					<div class="mt-4 flex flex-wrap gap-2">
-						{
-							blogTags.map((tag) => (
-								<span
-									data-key={tag}
-									class={`cursor-pointer text-[12px] rounded-full px-2 py-1 font-medium hover:bg-gray-200 border border-gray-200`}
-									onclick={`toggleCategory('${tag}')`}
-								>
-									{tag}
-								</span>
-							))
-						}
-					</div>
-
-					{/* results */}
-					<div id="results-summary" class="mt-4 text-sm text-gray-600">
-						<!-- Results summary will be populated by script -->
-					</div>
-				</div>
-			</section>
-
-			{/* blog  */}
-			<section class="w-full bg-white py-12">
-				<div class="container mx-auto px-4 md:px-6">
-					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
-						{
-							posts.map((post) => (
-								<Card
-									data-key={post.id}
-									image={post.image}
-									title={post.title}
-									description={post.excerpt}
-									buttonText="Leer más"
-									buttonLink={post.url || "#"}
-								/>
-							))
-						}
-					</div>
-					<div
-						id="no-results"
-						class="flex flex-col items-center justify-center py-12 text-center"
-						style="display: none;"
-					>
-						<h3 class="text-xl font-bold">No se encontraron artículos</h3>
-						<p class="mt-2 text-gray-600 mb-3">
-							Elimina o modifica el filtro y vuelve a intentar
-						</p>
-						<button
-							id="clear-filters-no-results-button"
-							class="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
-						>
-							<svg
-								width="20"
-								height="20"
-								viewBox="0 0 24 24"
-								fill="none"
-								stroke="#800000"
-								stroke-width="2"
-								stroke-linecap="round"
-								stroke-linejoin="round"
-								class="lucide lucide-trash-icon lucide-trash"
-							>
-								<path d="M3 6h18"></path>
-								<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
-								<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
-							</svg>
-							Borrar filtros
-						</button>
-					</div>
-				</div>
-			</section>
+			<BlogFilter client:load posts={posts} tags={blogTags} />
 		</main>
 	</div>
 </Layout>
