@@ -26,3 +26,6 @@ pnpm-debug.log*
 #ide
 .vscode/
 .cursor
+
+#others
+todo.md
