@@ -3,13 +3,21 @@ import Layout from "../layouts/Layout.astro";
 import Card from "../components/ui/Card.astro";
 import { blogTags } from "../data/blogTags";
 
-const allPostsData = await Astro.glob("../../src/pages/posts/*.md");
+const allPostsData = await Promise.all(
+	Object.entries(import.meta.glob("./posts/*.md", { eager: true })).map(
+		([path, post]) => ({
+			url: path.replace("./posts/", "/posts/").replace(".md", "/"),
+			id: path,
+			frontmatter: (post as { frontmatter: any }).frontmatter,
+		})
+	)
+);
 
 const posts = allPostsData.map((post) => ({
-	id: post.url, // Or generate a unique ID if needed
+	id: post.id,
 	url: post.url,
 	title: post.frontmatter.title,
-	excerpt: post.frontmatter.excerpt || post.frontmatter.description || "", // Assuming excerpt or description in frontmatter
+	excerpt: post.frontmatter.excerpt || post.frontmatter.description || "",
 	date: post.frontmatter.date
 		? new Date(post.frontmatter.date).toLocaleDateString("es-ES", {
 				year: "numeric",
@@ -17,12 +25,9 @@ const posts = allPostsData.map((post) => ({
 				day: "numeric",
 			})
 		: "Fecha no disponible",
-	categories: post.frontmatter.tags || [], // Assuming tags in frontmatter act as categories
-	image: post.frontmatter.image || "/placeholder-image.jpg", // Assuming image path in frontmatter
-	// Ensure all properties used by Card and filtering are mapped here
+	categories: post.frontmatter.tags || [],
+	image: post.frontmatter.image || "/placeholder-image.jpg",
 }));
-
-const postsPerPage = 6;
 ---
 
 <Layout>
@@ -178,74 +183,3 @@ const postsPerPage = 6;
 		</main>
 	</div>
 </Layout>
-
-<script define:vars={{ allPosts: posts, allBlogTags: blogTags, postsPerPage }}>
-	let searchQuery = "";
-	let selectedCategories = [];
-	const searchInput = document.getElementById("search-input");
-	const clearFiltersButton = document.getElementById("clear-filters-button");
-	const noResultsDiv = document.getElementById("no-results");
-	const clearFiltersNoResultsButton = document.getElementById(
-		"clear-filters-no-results-button"
-	);
-
-	function toggleCategory(category) {
-		if (selectedCategories.includes(category)) {
-			selectedCategories = selectedCategories.filter((c) => c !== category);
-		} else {
-			selectedCategories = [...selectedCategories, category];
-		}
-		renderPage();
-	}
-
-	function clearFilters() {
-		searchQuery = "";
-		selectedCategories = [];
-		if (searchInput) searchInput.value = "";
-		renderPage();
-	}
-
-	if (clearFiltersButton) clearFiltersButton.onclick = clearFilters;
-	if (clearFiltersNoResultsButton)
-		clearFiltersNoResultsButton.onclick = clearFilters;
-
-	function renderPage() {
-		// filter posts
-		const filteredPosts = allPosts.filter((post) => {
-			const matchesSearch =
-				post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
-				post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
-			const matchesCategories =
-				selectedCategories.length === 0 ||
-				(post.categories &&
-					post.categories.some((category) =>
-						selectedCategories.includes(category)
-					));
-			return matchesSearch && matchesCategories;
-		});
-
-		// update summary
-		let summaryText = `${filteredPosts.length} ${filteredPosts.length === 1 ? "artículo" : "artículos"}`;
-		if (selectedCategories.length > 0) {
-			summaryText += ` en ${selectedCategories.join(", ")}`;
-		}
-		if (searchQuery) {
-			summaryText += ` coincide con "${searchQuery}"`;
-		}
-
-		// show/hide clear filters button
-		if (clearFiltersButton) {
-			clearFiltersButton.style.display =
-				searchQuery || selectedCategories.length > 0 ? "flex" : "none";
-		}
-	}
-
-	if (searchInput) {
-		searchInput.oninput = (e) => {
-			searchQuery = e.target.value;
-			renderPage();
-		};
-	}
-
-	// initial render
-</script>
