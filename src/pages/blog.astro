@@ -19,8 +19,8 @@ const posts = allPostsData.map((post) => ({
 	url: post.url,
 	title: post.frontmatter.title,
 	excerpt: post.frontmatter.excerpt || post.frontmatter.description || "",
-	date: post.frontmatter.date
-		? new Date(post.frontmatter.date).toLocaleDateString("es-ES", {
+	date: post.frontmatter.pubDate
+		? new Date(post.frontmatter.pubDate).toLocaleDateString("es-ES", {
 				year: "numeric",
 				month: "long",
 				day: "numeric",
@@ -71,6 +71,7 @@ const posts = allPostsData.map((post) => ({
 									<Card
 										image={post.image}
 										title={post.title}
+										subtitle={post.date}
 										description={post.excerpt}
 										categories={post.categories}
 										buttonText="Leer más"
