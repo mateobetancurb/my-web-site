@@ -37,7 +37,7 @@ const {
 		class={`aspect-video w-full overflow-hidden ${styles.imageContainer || ""}`}
 	>
 		<div class="h-48 bg-white flex items-center justify-center">
-			<img src={image} alt={title} />
+			<img src={image && "https://placehold.co/600x400"} alt={title} />
 		</div>
 	</div>
 	<div class={`p-6 ${styles.contentContainer || ""}`}>
