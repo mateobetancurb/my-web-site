@@ -137,6 +137,7 @@ const postsPerPage = 6;
 									title={post.title}
 									description={post.excerpt}
 									buttonText="Leer más"
+									buttonLink={post.url || "#"}
 								/>
 							))
 						}
@@ -172,12 +173,6 @@ const postsPerPage = 6;
 							Borrar filtros
 						</button>
 					</div>
-					<div
-						id="pagination-container"
-						class="mt-8 flex items-center justify-center gap-2"
-					>
-						<!-- Pagination will be rendered here by script -->
-					</div>
 				</div>
 			</section>
 		</main>
@@ -187,7 +182,6 @@ const postsPerPage = 6;
 <script define:vars={{ allPosts: posts, allBlogTags: blogTags, postsPerPage }}>
 	let searchQuery = "";
 	let selectedCategories = [];
-	let currentPage = 1;
 	const searchInput = document.getElementById("search-input");
 	const clearFiltersButton = document.getElementById("clear-filters-button");
 	const noResultsDiv = document.getElementById("no-results");
@@ -196,7 +190,6 @@ const postsPerPage = 6;
 	);
 
 	function toggleCategory(category) {
-		currentPage = 1;
 		if (selectedCategories.includes(category)) {
 			selectedCategories = selectedCategories.filter((c) => c !== category);
 		} else {
@@ -208,7 +201,6 @@ const postsPerPage = 6;
 	function clearFilters() {
 		searchQuery = "";
 		selectedCategories = [];
-		currentPage = 1;
 		if (searchInput) searchInput.value = "";
 		renderPage();
 	}
@@ -232,53 +224,6 @@ const postsPerPage = 6;
 			return matchesSearch && matchesCategories;
 		});
 
-		// paginate posts
-		const indexOfLastPost = currentPage * postsPerPage;
-		const indexOfFirstPost = indexOfLastPost - postsPerPage;
-		const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
-		const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
-
-		// render pagination
-		paginationContainer.innerHTML = "";
-		if (totalPages > 1) {
-			// prev button
-			const prevButton = document.createElement("button");
-			prevButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m15 18-6-6 6-6" /></svg>`;
-			prevButton.className = "cursor-pointer";
-			prevButton.disabled = currentPage === 1;
-			prevButton.onclick = () => {
-				currentPage = Math.max(1, currentPage - 1);
-				renderPage();
-			};
-			paginationContainer.appendChild(prevButton);
-
-			// page numbers
-			for (let i = 1; i <= totalPages; i++) {
-				const pageButton = document.createElement("button");
-				pageButton.textContent = i;
-				pageButton.className =
-					currentPage === i
-						? "bg-black text-white px-3 py-1 rounded-md hover:bg-gray-800 text-sm"
-						: "cursor-pointer px-3 py-1 rounded-md text-sm hover:bg-gray-200";
-				pageButton.onclick = () => {
-					currentPage = i;
-					renderPage();
-				};
-				paginationContainer.appendChild(pageButton);
-			}
-
-			// next button
-			const nextButton = document.createElement("button");
-			nextButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m9 18 6-6-6-6" /></svg>`;
-			nextButton.className = "cursor-pointer";
-			nextButton.disabled = currentPage === totalPages;
-			nextButton.onclick = () => {
-				currentPage = Math.min(totalPages, currentPage + 1);
-				renderPage();
-			};
-			paginationContainer.appendChild(nextButton);
-		}
-
 		// update summary
 		let summaryText = `${filteredPosts.length} ${filteredPosts.length === 1 ? "artículo" : "artículos"}`;
 		if (selectedCategories.length > 0) {
@@ -287,7 +232,6 @@ const postsPerPage = 6;
 		if (searchQuery) {
 			summaryText += ` coincide con "${searchQuery}"`;
 		}
-		resultsSummary.textContent = summaryText;
 
 		// show/hide clear filters button
 		if (clearFiltersButton) {
@@ -299,12 +243,9 @@ const postsPerPage = 6;
 	if (searchInput) {
 		searchInput.oninput = (e) => {
 			searchQuery = e.target.value;
-			currentPage = 1;
 			renderPage();
 		};
 	}
 
 	// initial render
-	renderCategories();
-	renderPage();
 </script>
