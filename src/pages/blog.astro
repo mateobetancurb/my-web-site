@@ -26,7 +26,7 @@ const posts = allPostsData.map((post) => ({
 				day: "numeric",
 			})
 		: "Fecha no disponible",
-	categories: post.frontmatter.tags || [],
+	categories: post.frontmatter.categories || [],
 	image: post.frontmatter.image || "/placeholder-image.jpg",
 }));
 ---
