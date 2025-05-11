@@ -1,7 +1,310 @@
 ---
 import Layout from "../layouts/Layout.astro";
+import Card from "../components/ui/Card.astro";
+import { blogTags } from "../data/blogTags";
+
+const allPostsData = await Astro.glob("../../src/pages/posts/*.md");
+
+const posts = allPostsData.map((post) => ({
+	id: post.url, // Or generate a unique ID if needed
+	url: post.url,
+	title: post.frontmatter.title,
+	excerpt: post.frontmatter.excerpt || post.frontmatter.description || "", // Assuming excerpt or description in frontmatter
+	date: post.frontmatter.date
+		? new Date(post.frontmatter.date).toLocaleDateString("es-ES", {
+				year: "numeric",
+				month: "long",
+				day: "numeric",
+			})
+		: "Fecha no disponible",
+	categories: post.frontmatter.tags || [], // Assuming tags in frontmatter act as categories
+	image: post.frontmatter.image || "/placeholder-image.jpg", // Assuming image path in frontmatter
+	// Ensure all properties used by Card and filtering are mapped here
+}));
+
+const postsPerPage = 6;
 ---
 
 <Layout>
-	<h1>Blog</h1>
+	<div class="flex min-h-screen flex-col">
+		<main class="flex-1">
+			<section class="w-full bg-black py-12 md:py-16">
+				<div class="container mx-auto px-4 md:px-6">
+					<div
+						class="flex flex-col items-center justify-center space-y-4 text-center"
+					>
+						<div class="space-y-2">
+							<h1
+								class="text-3xl mb-5 font-bold tracking-tighter text-white sm:text-5xl"
+							>
+								Blog
+							</h1>
+							<p
+								class="max-w-[900px] text-gray-300 md:text-xl/relaxed lg:text-base/relaxed xl:text-xl/relaxed"
+							>
+								Reflexiones, tutoriales y benchmarks sobre desarrollo de
+								software e inteligencia artificial
+							</p>
+						</div>
+					</div>
+				</div>
+			</section>
+
+			{/* input and filters */}
+			<section class="w-full bg-gray-100 py-6">
+				<div class="container mx-auto px-4 md:px-6">
+					<div
+						class="flex flex-col gap-4 md:flex-row md:items-center md:justify-between"
+					>
+						<div class="relative w-full md:max-w-sm">
+							<svg
+								width="24"
+								height="24"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="currentColor"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-search-icon lucide-search absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-gray-500"
+							>
+								<circle cx="11" cy="11" r="8"></circle>
+								<path d="m21 21-4.3-4.3"></path>
+							</svg>
+							<input
+								type="search"
+								id="search-input"
+								placeholder="Buscar artículos..."
+								class="pl-10 w-full bg-white rounded-md p-2 text-sm shadow-sm"
+							/>
+						</div>
+
+						<button
+							id="clear-filters-button"
+							style="display: none;"
+							class="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000] w-fit"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="#800000"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-trash-icon lucide-trash"
+							>
+								<path d="M3 6h18"></path>
+								<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+								<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+							</svg>
+							Borrar filtros
+						</button>
+					</div>
+
+					{/* filters */}
+					<div class="mt-4 flex flex-wrap gap-2">
+						{
+							blogTags.map((tag) => (
+								<span
+									data-key={tag}
+									class={`cursor-pointer text-[12px] rounded-full px-2 py-1 font-medium hover:bg-gray-200 border border-gray-200`}
+									onclick={`toggleCategory('${tag}')`}
+								>
+									{tag}
+								</span>
+							))
+						}
+					</div>
+
+					{/* results */}
+					<div id="results-summary" class="mt-4 text-sm text-gray-600">
+						<!-- Results summary will be populated by script -->
+					</div>
+				</div>
+			</section>
+
+			{/* blog  */}
+			<section class="w-full bg-white py-12">
+				<div class="container mx-auto px-4 md:px-6">
+					<div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+						{
+							posts.map((post) => (
+								<Card
+									data-key={post.id}
+									image={post.image}
+									title={post.title}
+									description={post.excerpt}
+									buttonText="Leer más"
+								/>
+							))
+						}
+					</div>
+					<div
+						id="no-results"
+						class="flex flex-col items-center justify-center py-12 text-center"
+						style="display: none;"
+					>
+						<h3 class="text-xl font-bold">No se encontraron artículos</h3>
+						<p class="mt-2 text-gray-600 mb-3">
+							Elimina o modifica el filtro y vuelve a intentar
+						</p>
+						<button
+							id="clear-filters-no-results-button"
+							class="flex items-center gap-2 h-8 text-xs bg-red-100 rounded-full px-2 cursor-pointer hover:bg-red-200 transition-all text-[#800000]"
+						>
+							<svg
+								width="20"
+								height="20"
+								viewBox="0 0 24 24"
+								fill="none"
+								stroke="#800000"
+								stroke-width="2"
+								stroke-linecap="round"
+								stroke-linejoin="round"
+								class="lucide lucide-trash-icon lucide-trash"
+							>
+								<path d="M3 6h18"></path>
+								<path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6"></path>
+								<path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2"></path>
+							</svg>
+							Borrar filtros
+						</button>
+					</div>
+					<div
+						id="pagination-container"
+						class="mt-8 flex items-center justify-center gap-2"
+					>
+						<!-- Pagination will be rendered here by script -->
+					</div>
+				</div>
+			</section>
+		</main>
+	</div>
 </Layout>
+
+<script define:vars={{ allPosts: posts, allBlogTags: blogTags, postsPerPage }}>
+	let searchQuery = "";
+	let selectedCategories = [];
+	let currentPage = 1;
+	const searchInput = document.getElementById("search-input");
+	const clearFiltersButton = document.getElementById("clear-filters-button");
+	const noResultsDiv = document.getElementById("no-results");
+	const clearFiltersNoResultsButton = document.getElementById(
+		"clear-filters-no-results-button"
+	);
+
+	function toggleCategory(category) {
+		currentPage = 1;
+		if (selectedCategories.includes(category)) {
+			selectedCategories = selectedCategories.filter((c) => c !== category);
+		} else {
+			selectedCategories = [...selectedCategories, category];
+		}
+		renderPage();
+	}
+
+	function clearFilters() {
+		searchQuery = "";
+		selectedCategories = [];
+		currentPage = 1;
+		if (searchInput) searchInput.value = "";
+		renderPage();
+	}
+
+	if (clearFiltersButton) clearFiltersButton.onclick = clearFilters;
+	if (clearFiltersNoResultsButton)
+		clearFiltersNoResultsButton.onclick = clearFilters;
+
+	function renderPage() {
+		// filter posts
+		const filteredPosts = allPosts.filter((post) => {
+			const matchesSearch =
+				post.title.toLowerCase().includes(searchQuery.toLowerCase()) ||
+				post.excerpt.toLowerCase().includes(searchQuery.toLowerCase());
+			const matchesCategories =
+				selectedCategories.length === 0 ||
+				(post.categories &&
+					post.categories.some((category) =>
+						selectedCategories.includes(category)
+					));
+			return matchesSearch && matchesCategories;
+		});
+
+		// paginate posts
+		const indexOfLastPost = currentPage * postsPerPage;
+		const indexOfFirstPost = indexOfLastPost - postsPerPage;
+		const currentPosts = filteredPosts.slice(indexOfFirstPost, indexOfLastPost);
+		const totalPages = Math.ceil(filteredPosts.length / postsPerPage);
+
+		// render pagination
+		paginationContainer.innerHTML = "";
+		if (totalPages > 1) {
+			// prev button
+			const prevButton = document.createElement("button");
+			prevButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m15 18-6-6 6-6" /></svg>`;
+			prevButton.className = "cursor-pointer";
+			prevButton.disabled = currentPage === 1;
+			prevButton.onclick = () => {
+				currentPage = Math.max(1, currentPage - 1);
+				renderPage();
+			};
+			paginationContainer.appendChild(prevButton);
+
+			// page numbers
+			for (let i = 1; i <= totalPages; i++) {
+				const pageButton = document.createElement("button");
+				pageButton.textContent = i;
+				pageButton.className =
+					currentPage === i
+						? "bg-black text-white px-3 py-1 rounded-md hover:bg-gray-800 text-sm"
+						: "cursor-pointer px-3 py-1 rounded-md text-sm hover:bg-gray-200";
+				pageButton.onclick = () => {
+					currentPage = i;
+					renderPage();
+				};
+				paginationContainer.appendChild(pageButton);
+			}
+
+			// next button
+			const nextButton = document.createElement("button");
+			nextButton.innerHTML = `<svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="m9 18 6-6-6-6" /></svg>`;
+			nextButton.className = "cursor-pointer";
+			nextButton.disabled = currentPage === totalPages;
+			nextButton.onclick = () => {
+				currentPage = Math.min(totalPages, currentPage + 1);
+				renderPage();
+			};
+			paginationContainer.appendChild(nextButton);
+		}
+
+		// update summary
+		let summaryText = `${filteredPosts.length} ${filteredPosts.length === 1 ? "artículo" : "artículos"}`;
+		if (selectedCategories.length > 0) {
+			summaryText += ` en ${selectedCategories.join(", ")}`;
+		}
+		if (searchQuery) {
+			summaryText += ` coincide con "${searchQuery}"`;
+		}
+		resultsSummary.textContent = summaryText;
+
+		// show/hide clear filters button
+		if (clearFiltersButton) {
+			clearFiltersButton.style.display =
+				searchQuery || selectedCategories.length > 0 ? "flex" : "none";
+		}
+	}
+
+	if (searchInput) {
+		searchInput.oninput = (e) => {
+			searchQuery = e.target.value;
+			currentPage = 1;
+			renderPage();
+		};
+	}
+
+	// initial render
+	renderCategories();
+	renderPage();
+</script>
