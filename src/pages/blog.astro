@@ -75,6 +75,11 @@ const posts = allPostsData.map((post) => ({
 										categories={post.categories}
 										buttonText="Leer más"
 										buttonLink={post.url}
+										styles={{
+											container: "bg-white border border-gray-200 shadow",
+											title: "text-black",
+											description: "text-black",
+										}}
 									/>
 								</div>
 							))
