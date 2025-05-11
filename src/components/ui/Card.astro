@@ -6,6 +6,7 @@ interface Props {
 	description: string;
 	categories?: string[];
 	buttonText: string;
+	buttonLink: string;
 	styles?: {
 		container?: string;
 		imageContainer?: string;
@@ -24,6 +25,7 @@ const {
 	description,
 	categories,
 	buttonText,
+	buttonLink,
 	styles = {},
 } = Astro.props;
 ---
@@ -62,12 +64,13 @@ const {
 	</div>
 
 	<div class="px-6 pb-6">
-		<button
-			class={`cursor-pointer w-full rounded-md py-2 px-4 bg-black transition-all duration-200 transform hover:scale-105 hover:translate-y-[-1px] active:translate-y-[1px] ${
+		<a
+			href={buttonLink}
+			class={`cursor-pointer inline-block text-center w-full rounded-md py-2 px-4 bg-black transition-all duration-200 transform hover:scale-105 hover:translate-y-[-1px] active:translate-y-[1px] ${
 				styles.button || ""
 			}`}
 		>
 			{buttonText}
-		</button>
+		</a>
 	</div>
 </div>
