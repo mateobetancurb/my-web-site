@@ -117,49 +117,49 @@
 			Contacto
 		</a>
 	</div>
-</div>
 
-<script>
-	const menuToggleButton = document.getElementById("menu-toggle-button");
-	const mobileMenu = document.getElementById("mobile-menu");
-	const menuLinks = mobileMenu?.querySelectorAll(".menu-link");
-	const hamburgerIcon = document.getElementById("hamburger-icon");
-	const closeIcon = document.getElementById("close-icon");
+	<script>
+		const menuToggleButton = document.getElementById("menu-toggle-button");
+		const mobileMenu = document.getElementById("mobile-menu");
+		const menuLinks = mobileMenu?.querySelectorAll(".menu-link");
+		const hamburgerIcon = document.getElementById("hamburger-icon");
+		const closeIcon = document.getElementById("close-icon");
 
-	let isMenuOpen = false;
+		let isMenuOpen = false;
 
-	const toggleMenu = () => {
-		isMenuOpen = !isMenuOpen;
+		const toggleMenu = () => {
+			isMenuOpen = !isMenuOpen;
 
-		menuToggleButton?.setAttribute("aria-expanded", String(isMenuOpen));
+			menuToggleButton?.setAttribute("aria-expanded", String(isMenuOpen));
 
-		if (hamburgerIcon && closeIcon) {
-			hamburgerIcon.classList.toggle("hidden", isMenuOpen);
-			closeIcon.classList.toggle("hidden", !isMenuOpen);
-		}
-
-		if (mobileMenu) {
-			mobileMenu.classList.toggle("opacity-0", !isMenuOpen);
-			mobileMenu.classList.toggle("-translate-y-full", !isMenuOpen);
-			mobileMenu.classList.toggle("pointer-events-none", !isMenuOpen);
-			mobileMenu.classList.toggle("opacity-100", isMenuOpen);
-			mobileMenu.classList.toggle("translate-y-0", isMenuOpen);
-		}
-
-		if (isMenuOpen) {
-			document.body.classList.add("overflow-hidden");
-		} else {
-			document.body.classList.remove("overflow-hidden");
-		}
-	};
-
-	menuToggleButton?.addEventListener("click", toggleMenu);
-
-	menuLinks?.forEach((link) => {
-		link.addEventListener("click", () => {
-			if (isMenuOpen) {
-				toggleMenu();
+			if (hamburgerIcon && closeIcon) {
+				hamburgerIcon.classList.toggle("hidden", isMenuOpen);
+				closeIcon.classList.toggle("hidden", !isMenuOpen);
 			}
+
+			if (mobileMenu) {
+				mobileMenu.classList.toggle("opacity-0", !isMenuOpen);
+				mobileMenu.classList.toggle("-translate-y-full", !isMenuOpen);
+				mobileMenu.classList.toggle("pointer-events-none", !isMenuOpen);
+				mobileMenu.classList.toggle("opacity-100", isMenuOpen);
+				mobileMenu.classList.toggle("translate-y-0", isMenuOpen);
+			}
+
+			if (isMenuOpen) {
+				document.body.classList.add("overflow-hidden");
+			} else {
+				document.body.classList.remove("overflow-hidden");
+			}
+		};
+
+		menuToggleButton?.addEventListener("click", toggleMenu);
+
+		menuLinks?.forEach((link) => {
+			link.addEventListener("click", () => {
+				if (isMenuOpen) {
+					toggleMenu();
+				}
+			});
 		});
-	});
-</script>
+	</script>
+</div>
