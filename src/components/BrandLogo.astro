@@ -1,0 +1,67 @@
+---
+interface Props {
+  href?: string;
+  label?: string;
+  showText?: boolean;
+  class?: string;
+  markClass?: string;
+  textClass?: string;
+}
+
+const {
+  href,
+  label = 'Mateo Betancur',
+  showText = true,
+  class: className = '',
+  markClass = 'h-10 w-10',
+  textClass = 'text-headline-md font-bold text-on-surface',
+} = Astro.props;
+---
+
+{href ? (
+  <a href={href} aria-label={label} class={`inline-flex items-center gap-3 ${className}`}>
+    <svg
+      class={markClass}
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect x="4" y="4" width="56" height="56" rx="14" fill="#fff8f5" />
+      <rect x="4.75" y="4.75" width="54.5" height="54.5" rx="13.25" stroke="#d5c3b6" stroke-width="1.5" />
+      <path d="M16 45V19L26 33L36 19V45" stroke="#6f4315" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M40 19V45M40 20H47C51 20 54 23 54 27.5C54 32 51 35 47 35H40M40 35H48C52.5 35 56 38 56 43C56 48 52.5 51 48 51H40"
+        stroke="#8b5a2b"
+        stroke-width="4.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path d="M12 12H25" stroke="#f9ba82" stroke-width="2.5" stroke-linecap="round" />
+    </svg>
+    {showText && <span class={textClass}>Mateo Betancur</span>}
+  </a>
+) : (
+  <div class={`inline-flex items-center gap-3 ${className}`} aria-label={label}>
+    <svg
+      class={markClass}
+      viewBox="0 0 64 64"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+    >
+      <rect x="4" y="4" width="56" height="56" rx="14" fill="#fff8f5" />
+      <rect x="4.75" y="4.75" width="54.5" height="54.5" rx="13.25" stroke="#d5c3b6" stroke-width="1.5" />
+      <path d="M16 45V19L26 33L36 19V45" stroke="#6f4315" stroke-width="4.5" stroke-linecap="round" stroke-linejoin="round" />
+      <path
+        d="M40 19V45M40 20H47C51 20 54 23 54 27.5C54 32 51 35 47 35H40M40 35H48C52.5 35 56 38 56 43C56 48 52.5 51 48 51H40"
+        stroke="#8b5a2b"
+        stroke-width="4.5"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+      />
+      <path d="M12 12H25" stroke="#f9ba82" stroke-width="2.5" stroke-linecap="round" />
+    </svg>
+    {showText && <span class={textClass}>Mateo Betancur</span>}
+  </div>
+)}
