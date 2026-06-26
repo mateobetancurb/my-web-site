@@ -3,8 +3,35 @@ import '../styles/global.css';
 interface Props {
   lang: 'en' | 'es';
   title?: string;
+  description: string;
+  image?: string;
 }
-const { lang, title = 'Mateo Betancur | Full-Stack Developer' } = Astro.props;
+const {
+  lang,
+  title = 'Mateo Betancur | Full-Stack Developer',
+  description,
+  image = '/og-image.jpg',
+} = Astro.props;
+
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL(image, Astro.site);
+const ogLocale = lang === 'es' ? 'es_ES' : 'en_US';
+const altLocale = lang === 'es' ? 'en_US' : 'es_ES';
+
+const jobTitle = lang === 'es' ? 'Desarrollador Full-Stack' : 'Full-Stack Developer';
+const personSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'Person',
+  name: 'Mateo Betancur',
+  url: Astro.site?.href,
+  jobTitle,
+  image: ogImage.href,
+  sameAs: [
+    'https://linkedin.com/in/mateobetancurb',
+    'https://github.com/mateobetancurb',
+  ],
+};
+
 const waMessage = lang === 'es'
   ? '¡Hola Mateo! Vi tu portafolio y me gustaría hablar sobre un posible proyecto.'
   : "Hi Mateo! I came across your portfolio and I'd love to chat about a potential project.";
@@ -16,12 +43,38 @@ const waHref = `https://wa.me/573116657036?text=${encodeURIComponent(waMessage)}
     <meta charset="utf-8" />
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <title>{title}</title>
+    <meta name="description" content={description} />
+    <meta name="robots" content="index, follow, max-image-preview:large" />
+    <link rel="canonical" href={canonicalURL} />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
     <link rel="icon" type="image/x-icon" href="/favicon.ico" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#fff8f5" />
     <meta name="generator" content={Astro.generator} />
-    <link rel="alternate" hreflang="en" href="/en/" />
-    <link rel="alternate" hreflang="es" href="/es/" />
-    <link rel="alternate" hreflang="x-default" href="/" />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content="Mateo Betancur" />
+    <meta property="og:locale" content={ogLocale} />
+    <meta property="og:locale:alternate" content={altLocale} />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <link rel="alternate" hreflang="en" href={new URL('/en/', Astro.site)} />
+    <link rel="alternate" hreflang="es" href={new URL('/es/', Astro.site)} />
+    <link rel="alternate" hreflang="x-default" href={new URL('/', Astro.site)} />
+
+    <script is:inline type="application/ld+json" set:html={JSON.stringify(personSchema)} />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
