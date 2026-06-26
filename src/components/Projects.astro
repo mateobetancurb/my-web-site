@@ -1,11 +1,16 @@
 ---
+import type { ui } from '../i18n/ui';
+interface Props {
+  t: typeof ui['en']['projects'];
+}
+const { t } = Astro.props;
 ---
 
 <section class="py-xl max-w-container-max mx-auto px-gutter" id="projects">
   <div class="flex flex-col md:flex-row justify-between items-end mb-16 gap-8">
     <div>
-      <span class="text-label-md text-primary uppercase tracking-widest">Portfolio</span>
-      <h2 class="text-headline-lg mt-2">Featured Case Studies</h2>
+      <span class="text-label-md text-primary uppercase tracking-widest">{t.eyebrow}</span>
+      <h2 class="text-headline-lg mt-2">{t.headline}</h2>
     </div>
     <div class="flex gap-4">
       <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
@@ -17,41 +22,26 @@
     </div>
   </div>
   <div class="grid md:grid-cols-2 gap-12">
-    <div class="group">
-      <div class="relative overflow-hidden rounded-3xl bg-surface-container-high aspect-video mb-6">
-        <div
-          class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
-          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuClwsgfCu3PWffe2Srh1Fmrh-_Ap2PcR5J5_KrCgXbHH2QmXmQqWZW06enwUxIoP4YjpGY6s4jjc00rUHAuPtNJn2ynhONN_xe1wOAsUy1kEsHzzs4K6aYfjQlDyNcHrq29Yz7CGF6bij24HYJQw0J8BDAm8c0g1pkUC3lNVffrxfc8Kd-u4wzDCk5rRWTBIcCCZS0guCTHKPPwp60NLZIwugtgJqcBehkJBEkYHzG7E2YplzsZ8j2TCy4Fv2-hp-Wg0xaSScj3qIk')"
-        ></div>
-        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+    {t.items.map((project) => (
+      <div class="group">
+        <div class="relative overflow-hidden rounded-3xl bg-surface-container-high aspect-video mb-6">
+          <div
+            class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
+            style={`background-image: url('${project.image}')`}
+          ></div>
+          <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
+        </div>
+        <div class="flex flex-wrap gap-2 mb-4">
+          {project.tags.map((tag) => (
+            <span class="text-label-sm text-primary-container bg-primary-fixed-dim px-3 py-1 rounded-full">{tag}</span>
+          ))}
+        </div>
+        <h3 class="text-headline-md mb-2">{project.title}</h3>
+        <p class="text-on-surface-variant mb-6">{project.description}</p>
+        <a class="inline-flex items-center gap-2 text-label-md text-primary border-b border-primary/20 hover:border-primary transition-all" href="#">
+          {t.cta} <span class="material-symbols-outlined">arrow_forward</span>
+        </a>
       </div>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="text-label-sm text-primary-container bg-primary-fixed-dim px-3 py-1 rounded-full">Next.js</span>
-        <span class="text-label-sm text-primary-container bg-primary-fixed-dim px-3 py-1 rounded-full">Shopify API</span>
-      </div>
-      <h3 class="text-headline-md mb-2">E-commerce Optimization</h3>
-      <p class="text-on-surface-variant mb-6">Reduced page load time by 40% for a luxury boutique through headless implementation and edge caching.</p>
-      <a class="inline-flex items-center gap-2 text-label-md text-primary border-b border-primary/20 hover:border-primary transition-all" href="#">
-        View Case Study <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
-    <div class="group">
-      <div class="relative overflow-hidden rounded-3xl bg-surface-container-high aspect-video mb-6">
-        <div
-          class="w-full h-full bg-cover bg-center group-hover:scale-105 transition-transform duration-700"
-          style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAIezAYUBt9M89mgWOQLlIMvkyHj4h_YKArrqAymPmZQWJ3c2StmNzMZnKHgZr2McSlVdhc7jRdH9eKgxvV0f_RlomKMNNQ-WqELSLY-gcjItU_7XQe3rbsgR4EPh1hcCcXMAC9g8gr02A8UJbwdA2TeQr1qf4SY2Dt0A95qCxzt3iEmrpu2F9zFlTIM5sN7FDcF9xltKLNiciE89uF-mw-Wzmosay-mq9Fp7jZGJtuT77eMWaGsGpDt6x5BwZeB1tAaN_eieUo7vM')"
-        ></div>
-        <div class="absolute inset-0 bg-primary/20 opacity-0 group-hover:opacity-100 transition-opacity"></div>
-      </div>
-      <div class="flex flex-wrap gap-2 mb-4">
-        <span class="text-label-sm text-primary-container bg-primary-fixed-dim px-3 py-1 rounded-full">TypeScript</span>
-        <span class="text-label-sm text-primary-container bg-primary-fixed-dim px-3 py-1 rounded-full">AWS</span>
-      </div>
-      <h3 class="text-headline-md mb-2">Multi-Tenant SaaS</h3>
-      <p class="text-on-surface-variant mb-6">Built a secure, scalable HR management platform supporting hundreds of organizations with isolated data layers.</p>
-      <a class="inline-flex items-center gap-2 text-label-md text-primary border-b border-primary/20 hover:border-primary transition-all" href="#">
-        View Case Study <span class="material-symbols-outlined">arrow_forward</span>
-      </a>
-    </div>
+    ))}
   </div>
 </section>

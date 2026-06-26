@@ -1,18 +1,23 @@
 ---
+import type { ui } from '../i18n/ui';
+interface Props {
+  t: typeof ui['en']['contact'];
+}
+const { t } = Astro.props;
 ---
 
 <section class="py-xl bg-surface-container-highest" id="contact">
   <div class="max-w-container-max mx-auto px-gutter grid md:grid-cols-2 gap-16">
     <div>
-      <h2 class="text-headline-lg mb-6">Have a project or opportunity in mind?</h2>
-      <p class="text-body-lg text-on-surface-variant mb-12">I'm currently accepting new projects and consulting opportunities. Let's create something exceptional together.</p>
+      <h2 class="text-headline-lg mb-6">{t.headline}</h2>
+      <p class="text-body-lg text-on-surface-variant mb-12">{t.body}</p>
       <div class="space-y-6">
         <div class="flex items-center gap-4">
           <div class="w-12 h-12 rounded-xl bg-primary-container text-on-primary-container flex items-center justify-center">
             <span class="material-symbols-outlined">mail</span>
           </div>
           <div>
-            <p class="text-label-sm text-on-surface-variant">Email me at</p>
+            <p class="text-label-sm text-on-surface-variant">{t.emailLabel}</p>
             <p class="text-body-md font-bold">mateobetancurb@gmail.com</p>
           </div>
         </div>
@@ -21,7 +26,7 @@
             <span class="material-symbols-outlined">location_on</span>
           </div>
           <div>
-            <p class="text-label-sm text-on-surface-variant">Based in</p>
+            <p class="text-label-sm text-on-surface-variant">{t.locationLabel}</p>
             <p class="text-body-md font-bold">Medellín, Colombia</p>
           </div>
         </div>
@@ -39,27 +44,27 @@
       <form class="space-y-6">
         <div class="grid md:grid-cols-2 gap-6">
           <div class="space-y-2">
-            <label class="text-label-md text-on-surface-variant">Name</label>
+            <label class="text-label-md text-on-surface-variant">{t.form.name}</label>
             <input class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary transition-all" type="text" />
           </div>
           <div class="space-y-2">
-            <label class="text-label-md text-on-surface-variant">Email</label>
+            <label class="text-label-md text-on-surface-variant">{t.form.email}</label>
             <input class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary transition-all" type="email" />
           </div>
         </div>
         <div class="space-y-2">
-          <label class="text-label-md text-on-surface-variant">Subject</label>
+          <label class="text-label-md text-on-surface-variant">{t.form.subject}</label>
           <select class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary transition-all">
-            <option>General Inquiry</option>
-            <option>Project Request</option>
-            <option>Consulting</option>
+            {t.form.subjectOptions.map((opt) => (
+              <option>{opt}</option>
+            ))}
           </select>
         </div>
         <div class="space-y-2">
-          <label class="text-label-md text-on-surface-variant">Message</label>
+          <label class="text-label-md text-on-surface-variant">{t.form.message}</label>
           <textarea class="w-full bg-surface-container border-none rounded-xl px-4 py-3 focus:ring-2 focus:ring-primary transition-all" rows="4"></textarea>
         </div>
-        <button class="w-full bg-primary text-on-primary py-4 rounded-xl text-headline-md hover:shadow-lg transition-all active:scale-95" type="submit">Send Message</button>
+        <button class="w-full bg-primary text-on-primary py-4 rounded-xl text-headline-md hover:shadow-lg transition-all active:scale-95" type="submit">{t.form.submit}</button>
       </form>
     </div>
   </div>

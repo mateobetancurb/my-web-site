@@ -1,14 +1,19 @@
 ---
+import type { ui } from '../i18n/ui';
+interface Props {
+  t: typeof ui['en']['skills'];
+}
+const { t } = Astro.props;
 ---
 
 <section class="py-xl max-w-container-max mx-auto px-gutter" id="skills">
   <div class="text-center mb-16">
-    <h2 class="text-headline-lg">Technical Arsenal</h2>
-    <p class="text-on-surface-variant mt-4">Tools and technologies I use to bring ideas to life.</p>
+    <h2 class="text-headline-lg">{t.headline}</h2>
+    <p class="text-on-surface-variant mt-4">{t.body}</p>
   </div>
   <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Frontend</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.frontend}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">React</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Next.js</span>
@@ -16,7 +21,7 @@
       </div>
     </div>
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Backend</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.backend}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Node.js</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">NestJS</span>
@@ -24,7 +29,7 @@
       </div>
     </div>
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Databases</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.databases}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">PostgreSQL</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">MongoDB</span>
@@ -32,7 +37,7 @@
       </div>
     </div>
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Cloud</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.cloud}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">AWS</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Vercel</span>
@@ -40,14 +45,14 @@
       </div>
     </div>
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Architecture</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.architecture}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Microservices</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Event-Driven</span>
       </div>
     </div>
     <div class="space-y-3">
-      <h4 class="text-label-md text-primary uppercase tracking-widest">Tools</h4>
+      <h4 class="text-label-md text-primary uppercase tracking-widest">{t.categories.tools}</h4>
       <div class="flex flex-wrap gap-2">
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Git</span>
         <span class="px-3 py-1 bg-surface-container-highest rounded-lg text-on-surface text-label-sm">Figma</span>
