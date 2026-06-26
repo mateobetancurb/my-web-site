@@ -123,7 +123,6 @@ export const ui = {
     contact: {
       headline: 'Have a project or opportunity in mind?',
       body: "I'm currently accepting new projects and consulting opportunities. Let's create something exceptional together.",
-      emailLabel: 'Email me at',
       locationLabel: 'Based in',
     },
     footer: {
@@ -256,7 +255,6 @@ export const ui = {
     contact: {
       headline: '¿Tienes un proyecto u oportunidad en mente?',
       body: 'Actualmente acepto nuevos proyectos y oportunidades de consultoría. Creemos algo excepcional juntos.',
-      emailLabel: 'Escríbeme a',
       locationLabel: 'Basado en',
     },
     footer: {
