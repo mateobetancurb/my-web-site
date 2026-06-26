@@ -1,0 +1,86 @@
+@import "tailwindcss";
+
+@theme inline {
+  /* Colors */
+  --color-background: #fff8f5;
+  --color-surface-dim: #e6d7cf;
+  --color-primary: #6f4315;
+  --color-primary-container: #8b5a2b;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #ffddc2;
+  --color-primary-fixed: #ffdcc1;
+  --color-primary-fixed-dim: #f9ba82;
+  --color-inverse-primary: #f9ba82;
+  --color-on-primary-fixed: #2e1500;
+  --color-on-primary-fixed-variant: #683d0f;
+  --color-secondary: #615e55;
+  --color-secondary-container: #e7e2d6;
+  --color-on-secondary: #ffffff;
+  --color-on-secondary-container: #67645b;
+  --color-secondary-fixed: #e7e2d6;
+  --color-secondary-fixed-dim: #cbc6bb;
+  --color-on-secondary-fixed: #1d1c15;
+  --color-on-secondary-fixed-variant: #49473e;
+  --color-tertiary: #584b35;
+  --color-tertiary-container: #71634c;
+  --color-on-tertiary: #ffffff;
+  --color-on-tertiary-container: #f4e0c3;
+  --color-tertiary-fixed: #f3e0c3;
+  --color-tertiary-fixed-dim: #d6c4a8;
+  --color-on-tertiary-fixed: #231a08;
+  --color-on-tertiary-fixed-variant: #51452f;
+  --color-surface: #fff8f5;
+  --color-surface-bright: #fff8f5;
+  --color-surface-container-lowest: #ffffff;
+  --color-surface-container-low: #fff1e9;
+  --color-surface-container: #faebe2;
+  --color-surface-container-high: #f4e5dd;
+  --color-surface-container-highest: #eee0d7;
+  --color-surface-variant: #eee0d7;
+  --color-surface-tint: #835425;
+  --color-on-surface: #211a15;
+  --color-on-surface-variant: #51443a;
+  --color-inverse-surface: #372f29;
+  --color-inverse-on-surface: #fdeee5;
+  --color-outline: #837469;
+  --color-outline-variant: #d5c3b6;
+  --color-error: #ba1a1a;
+  --color-error-container: #ffdad6;
+  --color-on-error: #ffffff;
+  --color-on-error-container: #93000a;
+  --color-on-background: #211a15;
+
+  /* Border radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-full: 9999px;
+
+  /* Spacing */
+  --spacing-container-max: 1200px;
+  --spacing-xs: 8px;
+  --spacing-sm: 16px;
+  --spacing-md: 24px;
+  --spacing-lg: 48px;
+  --spacing-xl: 80px;
+  --spacing-gutter: 24px;
+  --spacing-unit: 4px;
+}
+
+/* Typography scales — v4's --text-* only handles font-size + line-height,
+   so letter-spacing and font-weight are bundled here as component classes. */
+@layer components {
+  .text-display            { font-size: 64px;  line-height: 1.1;  letter-spacing: -0.02em; font-weight: 700; font-family: 'Manrope', sans-serif; }
+  .text-headline-lg        { font-size: 40px;  line-height: 1.2;  letter-spacing: -0.01em; font-weight: 600; font-family: 'Manrope', sans-serif; }
+  .text-headline-md        { font-size: 24px;  line-height: 1.3;  letter-spacing: 0.02em;  font-weight: 600; font-family: 'Manrope', sans-serif; }
+  .text-body-lg            { font-size: 18px;  line-height: 1.6;  letter-spacing: 0;       font-weight: 400; font-family: 'Manrope', sans-serif; }
+  .text-body-md            { font-size: 16px;  line-height: 1.6;  letter-spacing: 0;       font-weight: 400; font-family: 'Manrope', sans-serif; }
+  .text-label-md           { font-size: 14px;  line-height: 1.2;  letter-spacing: 0.05em;  font-weight: 600; font-family: 'Manrope', sans-serif; }
+  .text-label-sm           { font-size: 12px;  line-height: 1.2;  letter-spacing: 0.02em;  font-weight: 500; font-family: 'Manrope', sans-serif; }
+  .text-headline-lg-mobile { font-size: 32px;  line-height: 1.2;  letter-spacing: -0.01em; font-weight: 600; font-family: 'Manrope', sans-serif; }
+}
+
+body { font-family: 'Manrope', sans-serif; background-color: #fff8f5; color: #211a15; }
+.material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
+.glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
+.service-card:hover .icon-bg { transform: scale(1.1); background-color: #8b5a2b; color: white; }
