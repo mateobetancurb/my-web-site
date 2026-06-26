@@ -23,3 +23,16 @@ window.addEventListener('scroll', () => {
   const header = document.querySelector('header');
   if (header) header.classList.toggle('shadow-md', window.scrollY > 20);
 });
+
+document.querySelectorAll<HTMLElement>('[data-bg]').forEach((el) => {
+  const bgObserver = new IntersectionObserver(
+    ([entry]) => {
+      if (entry.isIntersecting) {
+        el.style.backgroundImage = el.dataset.bg!;
+        bgObserver.disconnect();
+      }
+    },
+    { rootMargin: '200px' }
+  );
+  bgObserver.observe(el);
+});
