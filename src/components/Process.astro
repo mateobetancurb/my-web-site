@@ -1,7 +1,7 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['process'];
+  t: UI[Lang]['process'];
 }
 const { t } = Astro.props;
 ---
@@ -15,12 +15,12 @@ const { t } = Astro.props;
           <div class={`w-16 h-16 rounded-full flex items-center justify-center font-bold text-xl mx-auto shadow-sm ${i === t.steps.length - 1 ? 'bg-primary text-on-primary' : 'bg-surface-container text-primary'}`}>
             {i + 1}
           </div>
-          <h5 class="text-headline-md">{step.title}</h5>
+          <h3 class="text-headline-md">{step.title}</h3>
           <p class="text-on-surface-variant text-body-md">{step.description}</p>
         </div>
         {i < t.steps.length - 1 && (
           <div class="hidden md:block pt-8 text-outline-variant">
-            <span class="material-symbols-outlined">trending_flat</span>
+            <span class="material-symbols-outlined" aria-hidden="true">trending_flat</span>
           </div>
         )}
       </>

@@ -1,7 +1,7 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['services'];
+  t: UI[Lang]['services'];
 }
 const { t } = Astro.props;
 ---
@@ -16,9 +16,9 @@ const { t } = Astro.props;
       {t.items.map((item) => (
         <div class="service-card group p-8 bg-surface-container-lowest rounded-2xl shadow-sm hover:shadow-xl transition-all">
           <div class="icon-bg w-12 h-12 rounded-xl bg-surface-container flex items-center justify-center text-primary mb-6 transition-all">
-            <span class="material-symbols-outlined">{item.icon}</span>
+            <span class="material-symbols-outlined" aria-hidden="true">{item.icon}</span>
           </div>
-          <h4 class="text-headline-md mb-2">{item.title}</h4>
+          <h3 class="text-headline-md mb-2">{item.title}</h3>
           <p class="text-body-md text-on-surface-variant">{item.description}</p>
         </div>
       ))}

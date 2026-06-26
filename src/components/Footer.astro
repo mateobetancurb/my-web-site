@@ -1,20 +1,21 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['footer'];
+  t: UI[Lang]['footer'];
 }
 const { t } = Astro.props;
+const year = new Date().getFullYear();
 ---
 
 <footer class="bg-background py-16 border-t border-surface-variant">
   <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-8">
     <div class="space-y-4 text-center md:text-left">
       <p class="text-headline-md font-bold text-primary">Mateo Betancur</p>
-      <p class="text-label-sm text-on-surface-variant">{t.copyright} {t.tagline}</p>
+      <p class="text-label-sm text-on-surface-variant">© {year} Mateo Betancur. {t.tagline}</p>
     </div>
     <div class="flex gap-8">
-      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.linkedin}</a>
-      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.github}</a>
+      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="https://linkedin.com/in/mateobetancurb" target="_blank" rel="noopener noreferrer">{t.links.linkedin}</a>
+      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="https://github.com/mateobetancurb" target="_blank" rel="noopener noreferrer">{t.links.github}</a>
       <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.sourceCode}</a>
     </div>
   </div>

@@ -1,7 +1,7 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['about'];
+  t: UI[Lang]['about'];
 }
 const { t } = Astro.props;
 ---
@@ -17,7 +17,7 @@ const { t } = Astro.props;
     <div class="grid md:grid-cols-3 gap-6">
       {t.stats.map((stat) => (
         <div class="bg-surface-container-lowest p-8 rounded-2xl border border-outline-variant hover:border-primary transition-colors">
-          <span class="material-symbols-outlined text-primary text-4xl mb-4">{stat.icon}</span>
+          <span class="material-symbols-outlined text-primary text-4xl mb-4" aria-hidden="true">{stat.icon}</span>
           <h3 class="text-headline-md mb-2">{stat.value}</h3>
           <p class="text-body-md text-on-surface-variant">{stat.description}</p>
         </div>

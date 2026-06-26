@@ -1,17 +1,16 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['header'];
-  lang: 'en' | 'es';
+  t: UI[Lang]['header'];
+  lang: Lang;
 }
 const { t, lang } = Astro.props;
-const altLang = lang === 'en' ? 'es' : 'en';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-surface-variant bg-surface/80">
   <div class="max-w-container-max mx-auto px-gutter h-20 flex justify-between items-center">
-    <a class="text-headline-md font-bold text-primary tracking-tighter" href={`/${lang}/`}>Mateo Betancur</a>
-    <nav class="hidden md:flex gap-8 items-center">
+    <a aria-label="Mateo Betancur – Home" class="text-headline-md font-bold text-primary tracking-tighter" href={`/${lang}/`}>Mateo Betancur</a>
+    <nav aria-label="Main" class="hidden md:flex gap-8 items-center">
       <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href={`/${lang}/#about`}>{t.nav.about}</a>
       <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href={`/${lang}/#skills`}>{t.nav.skills}</a>
       <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href={`/${lang}/#projects`}>{t.nav.projects}</a>
@@ -23,19 +22,42 @@ const altLang = lang === 'en' ? 'es' : 'en';
       <a
         href="/en/"
         data-lang="en"
+        aria-label="English"
+        aria-current={lang === 'en' ? 'true' : undefined}
         class={`text-label-md px-3 py-1 rounded-full transition-colors ${lang === 'en' ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-primary'}`}
       >EN</a>
       <a
         href="/es/"
         data-lang="es"
+        aria-label="Español"
+        aria-current={lang === 'es' ? 'true' : undefined}
         class={`text-label-md px-3 py-1 rounded-full transition-colors ${lang === 'es' ? 'bg-primary text-on-primary' : 'text-on-surface-variant hover:text-primary'}`}
       >ES</a>
     </div>
-    <button class="md:hidden text-primary">
-      <span class="material-symbols-outlined">menu</span>
+    <button
+      id="mobile-menu-toggle"
+      class="md:hidden text-primary"
+      aria-label="Open navigation menu"
+      aria-expanded="false"
+      aria-controls="mobile-menu"
+    >
+      <span class="material-symbols-outlined" aria-hidden="true">menu</span>
     </button>
   </div>
 </header>
+
+<nav
+  id="mobile-menu"
+  aria-label="Mobile navigation"
+  class="fixed top-20 left-0 right-0 z-40 glass-nav border-b border-surface-variant bg-surface/95 hidden md:hidden flex-col px-gutter py-6 gap-4"
+>
+  <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors py-2 mobile-nav-link" href={`/${lang}/#about`}>{t.nav.about}</a>
+  <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors py-2 mobile-nav-link" href={`/${lang}/#skills`}>{t.nav.skills}</a>
+  <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors py-2 mobile-nav-link" href={`/${lang}/#projects`}>{t.nav.projects}</a>
+  <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors py-2 mobile-nav-link" href={`/${lang}/#experience`}>{t.nav.experience}</a>
+  <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors py-2 mobile-nav-link" href={`/${lang}/#process`}>{t.nav.process}</a>
+  <a class="text-label-md bg-primary-container text-on-primary-container px-6 py-3 rounded-full hover:opacity-90 transition-all text-center mobile-nav-link" href={`/${lang}/#contact`}>{t.nav.contact}</a>
+</nav>
 
 <script>
   document.querySelectorAll('.lang-switcher a[data-lang]').forEach((link) => {
@@ -43,5 +65,35 @@ const altLang = lang === 'en' ? 'es' : 'en';
       const lang = link.getAttribute('data-lang');
       if (lang) localStorage.setItem('lang', lang);
     });
+  });
+
+  const toggle = document.getElementById('mobile-menu-toggle');
+  const menu = document.getElementById('mobile-menu');
+
+  const icon = toggle?.querySelector('.material-symbols-outlined');
+
+  function openMenu() {
+    menu?.classList.remove('hidden');
+    menu?.classList.add('flex');
+    toggle?.setAttribute('aria-expanded', 'true');
+    toggle?.setAttribute('aria-label', 'Close navigation menu');
+    if (icon) icon.textContent = 'close';
+  }
+
+  function closeMenu() {
+    menu?.classList.add('hidden');
+    menu?.classList.remove('flex');
+    toggle?.setAttribute('aria-expanded', 'false');
+    toggle?.setAttribute('aria-label', 'Open navigation menu');
+    if (icon) icon.textContent = 'menu';
+  }
+
+  toggle?.addEventListener('click', () => {
+    const isOpen = toggle.getAttribute('aria-expanded') === 'true';
+    isOpen ? closeMenu() : openMenu();
+  });
+
+  document.querySelectorAll('.mobile-nav-link').forEach((link) => {
+    link.addEventListener('click', closeMenu);
   });
 </script>

@@ -8,6 +8,7 @@ on:
 
 jobs:
   ci:
+    if: github.event_name == 'push' || github.head_ref == 'dev'
     runs-on: ubuntu-latest
 
     steps:

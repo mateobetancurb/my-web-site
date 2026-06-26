@@ -1,7 +1,7 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['hero'];
+  t: UI[Lang]['hero'];
   lang: 'en' | 'es';
 }
 const { t, lang } = Astro.props;
@@ -13,7 +13,7 @@ const { t, lang } = Astro.props;
       <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
       {t.badge}
     </div>
-    <h1 class="text-display leading-tight">
+    <h1 class="text-headline-lg-mobile lg:text-display leading-tight">
       {t.headline} <span class="text-primary-container">{t.headlineHighlight}</span>
     </h1>
     <p class="text-body-lg text-on-surface-variant max-w-[32rem]">
@@ -30,6 +30,11 @@ const { t, lang } = Astro.props;
       class="w-full rounded-2xl shadow-2xl transition-transform duration-500 group-hover:-translate-y-2"
       src="https://lh3.googleusercontent.com/aida-public/AB6AXuCsceWHlCTfPRYyEZiQvvuwNTFDgvyXDo3I0dkruGucA5S9YV84nxNQa9vFtMTwbjtsxj9Ji39Te2cVKyBlra1mgk2e0yRwqVAmYvm9XMJpGQq4ykrcOwZyhftl7xuTmC5MxtQ9HYloNB_16-i3QQ0sE9vhfF0AeFYmoij1vq2d7cEJt36gsIAnTzgG657NRBG96Kt8dFOCLPXc3e2Ciqe5kYtl0qYikwPm-oY5sOtWkvenO14HjCx5DrUAizOBZtGiK7KkttihPqA"
       alt="Mateo Betancur"
+      width="600"
+      height="600"
+      fetchpriority="high"
+      loading="eager"
+      decoding="sync"
     />
   </div>
 </section>
