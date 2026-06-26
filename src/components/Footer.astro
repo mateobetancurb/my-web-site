@@ -1,16 +1,18 @@
 ---
+import BrandLogo from './BrandLogo.astro';
 import type { UI, Lang } from '../i18n/utils';
 interface Props {
   t: UI[Lang]['footer'];
+  lang: Lang;
 }
-const { t } = Astro.props;
+const { t, lang } = Astro.props;
 const year = new Date().getFullYear();
 ---
 
 <footer class="bg-background py-16 border-t border-surface-variant">
   <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-8">
     <div class="space-y-4 text-center md:text-left">
-      <p class="text-headline-md font-bold text-primary">Mateo Betancur</p>
+      <BrandLogo href={`/${lang}/`} label="Mateo Betancur - Home" class="justify-center md:justify-start" markClass="h-10 w-10" textClass="text-headline-md font-bold text-on-surface" />
       <p class="text-label-sm text-on-surface-variant">© {year} Mateo Betancur. {t.tagline}</p>
     </div>
     <div class="flex gap-8">

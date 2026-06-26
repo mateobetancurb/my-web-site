@@ -1,5 +1,10 @@
 export const ui = {
   en: {
+    meta: {
+      title: 'Mateo Betancur | Full-Stack Developer',
+      description:
+        'Full-stack developer with 5+ years building high-performance web apps in TypeScript, React, Next.js, Vue & Node.js — scaling e-commerce platforms to 500k+ users on AWS.',
+    },
     header: {
       nav: {
         about: 'About',
@@ -134,6 +139,11 @@ export const ui = {
   },
 
   es: {
+    meta: {
+      title: 'Mateo Betancur | Desarrollador Full-Stack',
+      description:
+        'Desarrollador full-stack con más de 5 años creando aplicaciones web de alto rendimiento en TypeScript, React, Next.js, Vue y Node.js, escalando e-commerce a más de 500.000 usuarios en AWS.',
+    },
     header: {
       nav: {
         about: 'Sobre mí',
