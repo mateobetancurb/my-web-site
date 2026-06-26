@@ -1,3 +1,5 @@
+const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
 const observer = new IntersectionObserver(
   (entries) => {
     entries.forEach((entry) => {
@@ -11,8 +13,10 @@ const observer = new IntersectionObserver(
 );
 
 document.querySelectorAll('section').forEach((section) => {
-  section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
-  observer.observe(section);
+  if (!prefersReducedMotion) {
+    section.classList.add('transition-all', 'duration-1000', 'opacity-0', 'translate-y-10');
+    observer.observe(section);
+  }
 });
 
 window.addEventListener('scroll', () => {

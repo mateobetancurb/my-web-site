@@ -13,11 +13,11 @@ const { t } = Astro.props;
       <h2 class="text-headline-lg mt-2">{t.headline}</h2>
     </div>
     <div class="flex gap-4">
-      <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
-        <span class="material-symbols-outlined">chevron_left</span>
+      <button aria-label="Previous projects" class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_left</span>
       </button>
-      <button class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
-        <span class="material-symbols-outlined">chevron_right</span>
+      <button aria-label="Next projects" class="w-12 h-12 rounded-full border border-outline flex items-center justify-center hover:bg-primary hover:text-on-primary transition-all">
+        <span class="material-symbols-outlined" aria-hidden="true">chevron_right</span>
       </button>
     </div>
   </div>
@@ -39,7 +39,7 @@ const { t } = Astro.props;
         <h3 class="text-headline-md mb-2">{project.title}</h3>
         <p class="text-on-surface-variant mb-6">{project.description}</p>
         <a class="inline-flex items-center gap-2 text-label-md text-primary border-b border-primary/20 hover:border-primary transition-all" href="#">
-          {t.cta} <span class="material-symbols-outlined">arrow_forward</span>
+          {t.cta} <span class="material-symbols-outlined" aria-hidden="true">arrow_forward</span>
         </a>
       </div>
     ))}
