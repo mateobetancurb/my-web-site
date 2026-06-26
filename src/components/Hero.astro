@@ -23,6 +23,16 @@ const { t, lang } = Astro.props;
       <a class="bg-primary text-on-primary px-8 py-4 rounded-xl text-label-md hover:shadow-lg transition-all active:scale-95" href={`/${lang}/#projects`}>{t.ctaPrimary}</a>
       <a class="border-2 border-primary text-primary px-8 py-4 rounded-xl text-label-md hover:bg-surface-container transition-all active:scale-95" href={`/${lang}/#contact`}>{t.ctaSecondary}</a>
     </div>
+    <div class="flex flex-wrap gap-3">
+      <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-label-md text-on-surface-variant border border-outline-variant hover:bg-surface-container hover:text-on-surface transition-all active:scale-95" href="/mateobetancur-english-cv.pdf" download>
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        {t.cvEn}
+      </a>
+      <a class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-label-md text-on-surface-variant border border-outline-variant hover:bg-surface-container hover:text-on-surface transition-all active:scale-95" href="/mateobetancur-spanish-cv.pdf" download>
+        <span class="material-symbols-outlined text-[18px]">download</span>
+        {t.cvEs}
+      </a>
+    </div>
   </div>
   <div class="relative group">
     <div class="absolute -inset-4 bg-surface-container-high rounded-3xl -z-10 group-hover:rotate-1 transition-transform"></div>

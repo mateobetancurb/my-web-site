@@ -17,6 +17,8 @@ export const ui = {
       body: "I'm a full-stack developer with over 5 years of experience specializing in TypeScript, React, Next.js, Vue, and Node.js, building high-performance web applications and scaling e-commerce platforms to over 500,000 users using AWS infrastructure.",
       ctaPrimary: 'View Projects',
       ctaSecondary: 'Contact Me',
+      cvEn: 'CV (English)',
+      cvEs: 'CV (Español)',
     },
     about: {
       headline: 'Precision-driven engineering',
@@ -123,7 +125,6 @@ export const ui = {
     contact: {
       headline: 'Have a project or opportunity in mind?',
       body: "I'm currently accepting new projects and consulting opportunities. Let's create something exceptional together.",
-      emailLabel: 'Email me at',
       locationLabel: 'Based in',
     },
     footer: {
@@ -150,6 +151,8 @@ export const ui = {
       body: 'Soy un desarrollador web con más de 5 años de experiencia, especializado en TypeScript, React, Next.js, Vue y Node.js, construyendo aplicaciones web de alto rendimiento y escalando plataformas de e-commerce a más de 500,000 usuarios con infraestructura AWS.',
       ctaPrimary: 'Ver Proyectos',
       ctaSecondary: 'Contáctame',
+      cvEn: 'CV (English)',
+      cvEs: 'CV (Español)',
     },
     about: {
       headline: 'Ingeniería orientada a la precisión',
@@ -256,7 +259,6 @@ export const ui = {
     contact: {
       headline: '¿Tienes un proyecto u oportunidad en mente?',
       body: 'Actualmente acepto nuevos proyectos y oportunidades de consultoría. Creemos algo excepcional juntos.',
-      emailLabel: 'Escríbeme a',
       locationLabel: 'Basado en',
     },
     footer: {
