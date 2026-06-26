@@ -16,7 +16,7 @@ const lang = 'en' as const;
 const t = useTranslations(lang);
 ---
 
-<Layout lang={lang} title="Mateo Betancur | Full-Stack Developer">
+<Layout lang={lang} title={t.meta.title} description={t.meta.description}>
   <Header t={t.header} lang={lang} />
   <main id="main-content">
     <Hero t={t.hero} lang={lang} />
