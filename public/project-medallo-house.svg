@@ -1,0 +1,10 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#171412"/>
+  <rect x="72" y="64" width="1056" height="547" rx="30" fill="#fff8f5"/>
+  <rect x="136" y="126" width="928" height="348" rx="18" fill="#211a15"/>
+  <path d="M250 390V210h48l62 86 62-86h48v180h-44V279l-50 69h-32l-50-69v111h-44Z" fill="#f9ba82"/>
+  <path d="M546 390V210h132c42 0 72 26 72 67 0 38-30 66-72 66h-86v47h-46Zm46-88h78c20 0 33-10 33-25s-13-25-33-25h-78v50Z" fill="#f9ba82"/>
+  <path d="M817 390V210h46v68h88v-68h46v180h-46v-70h-88v70h-46Z" fill="#f9ba82"/>
+  <text x="138" y="544" fill="#211a15" font-family="Manrope, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="4">MEDALLO HOUSE PRODUCTIONS</text>
+  <text x="140" y="578" fill="#51443a" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="4">TEMPORARY PROJECT PREVIEW</text>
+</svg>

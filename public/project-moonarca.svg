@@ -1,0 +1,10 @@
+<svg width="1200" height="675" viewBox="0 0 1200 675" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect width="1200" height="675" fill="#f7efe8"/>
+  <rect x="82" y="72" width="1036" height="531" rx="28" fill="#241a14"/>
+  <circle cx="835" cy="252" r="138" fill="#f3d8c6"/>
+  <circle cx="887" cy="222" r="138" fill="#241a14"/>
+  <path d="M352 224c-64 0-116 52-116 116s52 116 116 116 116-52 116-116-52-116-116-116Zm0 184c-38 0-68-30-68-68s30-68 68-68 68 30 68 68-30 68-68 68Z" fill="#f3d8c6"/>
+  <path d="M526 228h54l72 122 72-122h54v224h-50V315l-58 97h-36l-58-97v137h-50V228Z" fill="#f3d8c6"/>
+  <text x="236" y="526" fill="#f3d8c6" font-family="Manrope, Arial, sans-serif" font-size="38" font-weight="700" letter-spacing="9">MOONARCA</text>
+  <text x="236" y="562" fill="#dbc2b2" font-family="Manrope, Arial, sans-serif" font-size="18" font-weight="500" letter-spacing="4">RITUAL-INSPIRED FASHION</text>
+</svg>

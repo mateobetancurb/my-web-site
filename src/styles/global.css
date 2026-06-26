@@ -82,6 +82,19 @@
 
 body { font-family: 'Manrope', sans-serif; background-color: #fff8f5; color: #211a15; overflow-x: hidden; }
 html { overflow-x: hidden; }
+button,
+[role="button"],
+summary,
+input[type="button"],
+input[type="submit"],
+input[type="reset"] {
+  cursor: pointer;
+}
+
+button:disabled,
+[aria-disabled="true"] {
+  cursor: not-allowed;
+}
 .material-symbols-outlined { font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24; }
 .glass-nav { backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); }
 .service-card:hover .icon-bg { transform: scale(1.1); background-color: #8b5a2b; color: white; }
