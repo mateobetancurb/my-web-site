@@ -1,0 +1,11 @@
+# Security response headers (served by Cloudflare Pages).
+# The script-src/style-src CSP is emitted per-page as a <meta> tag by Astro's
+# security.csp config (astro.config.mjs). frame-ancestors can only be enforced via a
+# real response header, so it lives here alongside the other header-only protections.
+/*
+  X-Content-Type-Options: nosniff
+  Referrer-Policy: strict-origin-when-cross-origin
+  Permissions-Policy: geolocation=(), microphone=(), camera=()
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
+  Cross-Origin-Opener-Policy: same-origin
+  Content-Security-Policy: frame-ancestors 'none'
