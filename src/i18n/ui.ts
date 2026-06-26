@@ -56,6 +56,7 @@ export const ui = {
         cloud: 'Cloud',
         architecture: 'Architecture',
         tools: 'Tools',
+        aiTools: 'AI Tools',
       },
     },
     services: {
@@ -226,6 +227,7 @@ export const ui = {
         cloud: 'Nube',
         architecture: 'Arquitectura',
         tools: 'Herramientas',
+        aiTools: 'Herramientas IA',
       },
     },
     services: {
