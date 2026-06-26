@@ -1,11 +1,10 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['header'];
-  lang: 'en' | 'es';
+  t: UI[Lang]['header'];
+  lang: Lang;
 }
 const { t, lang } = Astro.props;
-const altLang = lang === 'en' ? 'es' : 'en';
 ---
 
 <header class="fixed top-0 left-0 right-0 z-50 glass-nav border-b border-surface-variant bg-surface/80">

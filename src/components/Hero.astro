@@ -1,7 +1,7 @@
 ---
-import type { ui } from '../i18n/ui';
+import type { UI, Lang } from '../i18n/utils';
 interface Props {
-  t: typeof ui['en']['hero'];
+  t: UI[Lang]['hero'];
   lang: 'en' | 'es';
 }
 const { t, lang } = Astro.props;
