@@ -1,21 +1,27 @@
 ---
+import type { ui } from '../i18n/ui';
+interface Props {
+  t: typeof ui['en']['hero'];
+  lang: 'en' | 'es';
+}
+const { t, lang } = Astro.props;
 ---
 
 <section class="pt-40 pb-xl px-gutter max-w-container-max mx-auto grid lg:grid-cols-2 gap-12 items-center">
   <div class="space-y-8">
     <div class="inline-flex items-center gap-2 px-4 py-2 bg-surface-container rounded-full text-primary text-label-md">
       <span class="w-2 h-2 bg-primary rounded-full animate-pulse"></span>
-      Available for new projects
+      {t.badge}
     </div>
     <h1 class="text-display leading-tight">
-      I build high-performance web applications with clean interfaces and <span class="text-primary-container">scalable architecture.</span>
+      {t.headline} <span class="text-primary-container">{t.headlineHighlight}</span>
     </h1>
     <p class="text-body-lg text-on-surface-variant max-w-[32rem]">
-      I'm a full-stack developer with over 5 years of experience creating modern web platforms using React, Next.js, TypeScript, Node.js, and cloud-based infrastructure.
+      {t.body}
     </p>
     <div class="flex flex-wrap gap-4">
-      <a class="bg-primary text-on-primary px-8 py-4 rounded-xl text-label-md hover:shadow-lg transition-all active:scale-95" href="#projects">View Projects</a>
-      <a class="border-2 border-primary text-primary px-8 py-4 rounded-xl text-label-md hover:bg-surface-container transition-all active:scale-95" href="#contact">Contact Me</a>
+      <a class="bg-primary text-on-primary px-8 py-4 rounded-xl text-label-md hover:shadow-lg transition-all active:scale-95" href={`/${lang}/#projects`}>{t.ctaPrimary}</a>
+      <a class="border-2 border-primary text-primary px-8 py-4 rounded-xl text-label-md hover:bg-surface-container transition-all active:scale-95" href={`/${lang}/#contact`}>{t.ctaSecondary}</a>
     </div>
   </div>
   <div class="relative group">

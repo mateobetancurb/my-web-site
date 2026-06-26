@@ -1,28 +1,27 @@
 ---
-import Layout from '../layouts/Layout.astro';
-import Header from '../components/Header.astro';
-import Hero from '../components/Hero.astro';
-import About from '../components/About.astro';
-import Skills from '../components/Skills.astro';
-import Services from '../components/Services.astro';
-import Projects from '../components/Projects.astro';
-import Experience from '../components/Experience.astro';
-import Process from '../components/Process.astro';
-import Contact from '../components/Contact.astro';
-import Footer from '../components/Footer.astro';
 ---
-
-<Layout>
-  <Header />
-  <main>
-    <Hero />
-    <About />
-    <Skills />
-    <Services />
-    <Projects />
-    <Experience />
-    <Process />
-    <Contact />
-  </main>
-  <Footer />
-</Layout>
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title>Redirecting…</title>
+    <noscript>
+      <meta http-equiv="refresh" content="0; url=/en/" />
+    </noscript>
+  </head>
+  <body>
+    <script>
+      (function () {
+        var saved = localStorage.getItem('lang');
+        if (saved === 'en' || saved === 'es') {
+          window.location.replace('/' + saved + '/');
+          return;
+        }
+        var browser = (navigator.language || '').toLowerCase();
+        var lang = browser.startsWith('es') ? 'es' : 'en';
+        localStorage.setItem('lang', lang);
+        window.location.replace('/' + lang + '/');
+      })();
+    </script>
+  </body>
+</html>

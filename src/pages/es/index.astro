@@ -1,0 +1,32 @@
+---
+import { useTranslations } from '../../i18n/utils';
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Hero from '../../components/Hero.astro';
+import About from '../../components/About.astro';
+import Skills from '../../components/Skills.astro';
+import Services from '../../components/Services.astro';
+import Projects from '../../components/Projects.astro';
+import Experience from '../../components/Experience.astro';
+import Process from '../../components/Process.astro';
+import Contact from '../../components/Contact.astro';
+import Footer from '../../components/Footer.astro';
+
+const lang = 'es' as const;
+const t = useTranslations(lang);
+---
+
+<Layout lang={lang} title="Mateo Betancur | Desarrollador Full-Stack">
+  <Header t={t.header} lang={lang} />
+  <main>
+    <Hero t={t.hero} lang={lang} />
+    <About t={t.about} />
+    <Skills t={t.skills} />
+    <Services t={t.services} />
+    <Projects t={t.projects} />
+    <Experience t={t.experience} />
+    <Process t={t.process} />
+    <Contact t={t.contact} />
+  </main>
+  <Footer t={t.footer} />
+</Layout>

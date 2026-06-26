@@ -1,16 +1,21 @@
 ---
+import type { ui } from '../i18n/ui';
+interface Props {
+  t: typeof ui['en']['footer'];
+}
+const { t } = Astro.props;
 ---
 
 <footer class="bg-background py-16 border-t border-surface-variant">
   <div class="max-w-container-max mx-auto px-gutter flex flex-col md:flex-row justify-between items-center gap-8">
     <div class="space-y-4 text-center md:text-left">
       <p class="text-headline-md font-bold text-primary">Mateo Betancur</p>
-      <p class="text-label-sm text-on-surface-variant">© 2024 Mateo Betancur. Built with precision and intent.</p>
+      <p class="text-label-sm text-on-surface-variant">{t.copyright} {t.tagline}</p>
     </div>
     <div class="flex gap-8">
-      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">LinkedIn</a>
-      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">GitHub</a>
-      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">Source Code</a>
+      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.linkedin}</a>
+      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.github}</a>
+      <a class="text-label-md text-on-surface-variant hover:text-primary transition-colors" href="#">{t.links.sourceCode}</a>
     </div>
   </div>
 </footer>
